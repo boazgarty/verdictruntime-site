@@ -1,0 +1,30 @@
+# Netlify deployment config. There is no build step - the site is plain HTML
+# and CSS, published straight from the repository root.
+#
+# Cloudflare Pages ignores this file and reads _headers instead; both are kept
+# in sync so the site deploys correctly on either host.
+
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    # This site ships no JavaScript, so scripts are forbidden outright rather
+    # than allowed and then constrained. Styles load from a stylesheet file and
+    # Google Fonts, never inline, so 'unsafe-inline' is not required.
+    Content-Security-Policy = "default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+
+[[headers]]
+  for = "/styles.css"
+
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
