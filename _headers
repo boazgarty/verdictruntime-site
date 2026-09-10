@@ -1,13 +1,15 @@
 # Response headers. Read natively by Cloudflare Pages, and also honoured by
 # Netlify. netlify.toml carries the same set for Netlify deploys.
 #
-# The Content-Security-Policy below is deliberately strict: this site ships no
-# JavaScript at all, so scripts can be forbidden outright rather than allowed
-# and then constrained. Styles come from a stylesheet file and Google Fonts,
-# never from inline attributes, so 'unsafe-inline' is not needed either.
+# The Content-Security-Policy below stays as tight as the page allows: the
+# only script this site ever loads is consent.js (same-origin) and, only
+# after a visitor accepts the cookie banner, Google's own gtag.js - both
+# named explicitly rather than opened up with 'unsafe-inline'/'unsafe-eval'.
+# Styles come from a stylesheet file and Google Fonts, never from inline
+# attributes, so style-src needs no relaxing either.
 
 /*
-  Content-Security-Policy: default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -20,3 +22,6 @@
 
 /favicon.svg
   Cache-Control: public, max-age=86400
+
+/consent.js
+  Cache-Control: public, max-age=3600

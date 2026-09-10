@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
 <link rel="stylesheet" href="styles.css">
+<script defer src="consent.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -385,5 +386,17 @@
   </footer>
 
 </div>
+
+<div id="consent-banner" class="consent" hidden role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <p>
+    This page uses Google Analytics to see which pages get read and where visitors come
+    from. It only runs if you say yes, and nothing loads before that.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn consent-btn-ghost">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn consent-btn-solid">Accept</button>
+  </div>
+</div>
+
 </body>
 </html>

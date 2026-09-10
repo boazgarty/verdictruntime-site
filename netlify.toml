@@ -12,10 +12,11 @@
   for = "/*"
 
   [headers.values]
-    # This site ships no JavaScript, so scripts are forbidden outright rather
-    # than allowed and then constrained. Styles load from a stylesheet file and
-    # Google Fonts, never inline, so 'unsafe-inline' is not required.
-    Content-Security-Policy = "default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+    # The only script this site loads is consent.js (same-origin) and, only
+    # after a visitor accepts the cookie banner, Google's gtag.js - both
+    # named explicitly rather than opened up with 'unsafe-inline'. Styles
+    # load from a stylesheet file and Google Fonts, never inline.
+    Content-Security-Policy = "default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
@@ -25,6 +26,12 @@
 
 [[headers]]
   for = "/styles.css"
+
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/consent.js"
 
   [headers.values]
     Cache-Control = "public, max-age=3600"
