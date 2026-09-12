@@ -3,15 +3,10 @@
 // The banner shows once; the choice is remembered so it never shows again in
 // this browser, and declining actually prevents the analytics script from
 // ever being requested rather than just hiding what it collects.
-//
-// TODO before this does anything useful: replace GA_MEASUREMENT_ID below
-// with the real "G-XXXXXXXXXX" id from your GA4 property (Admin > Data
-// Streams > your stream). Until then this file loads the banner and the
-// consent logic correctly, but Accept has nothing real to turn on.
 (function () {
   "use strict";
 
-  var GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+  var GA_MEASUREMENT_ID = "G-0SGW2S5FXF";
   var STORAGE_KEY = "consent-analytics";
 
   function loadAnalytics() {
