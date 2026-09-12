@@ -23,26 +23,27 @@ build command to none and the output directory to `/`. Reads `_headers`.
 **Netlify** — "Add new site" → import this repository. `netlify.toml` already
 declares no build command and publishes the repository root.
 
-Then add the custom domain in the host's dashboard and create **one CNAME
-record** at your DNS provider:
+The bare apex (`verdictruntime.com`, no prefix) already has an A record
+pointing at the application VM — the product dashboard stays there, at the
+main domain. Do not touch that A record and do not add the custom apex domain
+to this site's host. Instead, add **`www`** as the custom domain in the
+host's dashboard and create one CNAME record at your DNS provider:
 
 ```
 www   CNAME   <the hostname your host gives you>
 ```
 
-A subdomain is a plain CNAME and works on any DNS provider. The bare apex
-(`verdictruntime.com` with no prefix) cannot take a CNAME, so pointing the apex
-here means either moving nameservers to Cloudflare or using your host's apex
-support. Starting on `www` avoids that entirely.
+A subdomain is a plain CNAME and works on any DNS provider, unlike the apex
+(which would need moving nameservers to Cloudflare or using the host's apex
+support). So `www.verdictruntime.com` serves this marketing page and
+`verdictruntime.com` keeps serving the app, unchanged.
 
-Keep the product UI on its own subdomain (`app.verdictruntime.com`). Do not
-serve this page from the application VM: that instance is preemptible, and a
-marketing page that is down when a prospect clicks is worse than no page.
+Do not serve this page from the application VM: that instance is
+preemptible, and a marketing page that is down when a prospect clicks is
+worse than no page.
 
 ## Before it goes live
 
-- `security@verdictruntime.com` in `index.html` is a placeholder. Create the
-  mailbox or change the address.
 - There is no `og:image`, so shared links render as a text-only preview. Adding
   a 1200x630 PNG and an `og:image` tag is the one real improvement left.
 - The example finding in the hero is labelled as illustrative. Keep that label
