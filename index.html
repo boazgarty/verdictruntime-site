@@ -329,8 +329,9 @@
       <div class="eyebrow">Why trust the method</div>
       <h2>The discipline is checkable</h2>
       <p>
-        The same standard applied to the product is applied to its own claims. Four commitments
-        we hold ourselves to.
+        The same standard applied to the product is applied to its own claims. We test this
+        tool by fixing real security bugs in open-source projects that are not our customers,
+        owe us nothing, and review the work in public. Four commitments we hold ourselves to.
       </p>
     </div>
 
@@ -348,18 +349,23 @@
         <dt>Ships fixes, not just findings</dt>
         <dd>
           We have opened seven pull requests that patch real CVEs in active, real-world
-          open-source projects &mdash; not synthetic benchmarks. One has been reviewed and merged
-          upstream by a project's own maintainers; the other six remain open. That single merge
-          is a harder test than any benchmark score: someone outside this company had to agree
-          the fix was correct.
+          open-source projects &mdash; not synthetic benchmarks, and not projects that pay us.
+          One has been reviewed and merged upstream by a project's own maintainers. A second was
+          closed because the maintainer read it, agreed, and shipped the same dependency fix
+          himself within minutes of the pull request landing in his inbox &mdash; the vulnerable
+          versions are gone from that project either way. Five remain open. Those two outcomes
+          are a harder test than any benchmark score: someone outside this company had to read
+          the reasoning and agree the fix was correct.
         </dd>
       </div>
       <div class="proof-item">
         <dt>Validated against real code</dt>
         <dd>
-          New detections are proven on production open-source projects with positive and negative
-          controls in the same run &mdash; a rule that fires on nothing is treated as broken,
-          not as clean.
+          New detections are proven on production open-source projects &mdash; more than fifty
+          of them &mdash; with positive and negative controls in the same run, so a rule that
+          fires on nothing is treated as broken rather than clean. The live-traffic, cloud,
+          cluster and container checks are exercised against genuinely running systems: a real
+          cluster, a real cloud account, a real built image, never a mocked response.
         </dd>
       </div>
       <div class="proof-item">
