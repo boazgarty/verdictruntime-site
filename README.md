@@ -14,33 +14,29 @@ robots.txt     / sitemap.xml
 
 ## Deploying
 
-Either host works and both are free at this volume. Pick one — deploying to
-both means two copies of the same page competing in search results.
+**Live today (since 2026-10-05): served from the application VM**, by the same
+Caddy that fronts the app. `verdictruntime.com/product/` serves the files in
+`/var/www/verdict-marketing`; `www.verdictruntime.com/*` 308-redirects to
+`verdictruntime.com/product/*`, so there is one canonical URL. Caddy config:
+`/etc/caddy/Caddyfile` (recorded in `code-scanner-api/CLOUD.md`).
 
-**Cloudflare Pages** — create a project, connect this repository, and set the
-build command to none and the output directory to `/`. Reads `_headers`.
+To publish a change, from this directory:
 
-**Netlify** — "Add new site" → import this repository. `netlify.toml` already
-declares no build command and publishes the repository root.
-
-The bare apex (`verdictruntime.com`, no prefix) already has an A record
-pointing at the application VM — the product dashboard stays there, at the
-main domain. Do not touch that A record and do not add the custom apex domain
-to this site's host. Instead, add **`www`** as the custom domain in the
-host's dashboard and create one CNAME record at your DNS provider:
-
-```
-www   CNAME   <the hostname your host gives you>
+```bash
+tar cz index.html sample-report.html styles.css consent.js favicon.svg robots.txt sitemap.xml \
+  | gcloud compute ssh code-scanner --zone=us-central1-a \
+      --command='sudo tar xz --no-same-owner -C /var/www/verdict-marketing'
 ```
 
-A subdomain is a plain CNAME and works on any DNS provider, unlike the apex
-(which would need moving nameservers to Cloudflare or using the host's apex
-support). So `www.verdictruntime.com` serves this marketing page and
-`verdictruntime.com` keeps serving the app, unchanged.
+The page is only up while the VM is: it is `STANDARD` (not Spot/preemptible,
+checked 2026-10-05), but stopping it with `stop-gcp.sh` takes the marketing
+page down with the app. `_headers`/`netlify.toml` are not read on the VM —
+response headers come from Caddy.
 
-Do not serve this page from the application VM: that instance is
-preemptible, and a marketing page that is down when a prospect clicks is
-worse than no page.
+**Alternative: a static host.** Cloudflare Pages (connect this repo, no build
+command, output `/`, reads `_headers`) or Netlify (`netlify.toml` is ready)
+would keep the page up independently of the VM. Moving there means removing
+the `www` block from the Caddyfile and pointing `www` at the host instead.
 
 ## Before it goes live
 
