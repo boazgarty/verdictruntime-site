@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Assessment Report - Verdict Runtime</title>
+<meta name="description" content="A sample Verdict Runtime assessment report, run against Ledgerline, our own deliberately vulnerable demo application: live-confirmed findings first, then two-engine-corroborated ones, with verified fixes and an honest note on what was not checked.">
+<link rel="canonical" href="https://verdictruntime.com/product/sample-report.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+<script defer src="consent.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="wordmark"><span class="mark"></span>Verdict<span class="wordmark-2">Runtime</span></div>
+    <a class="back push" href="./">&larr; Back to overview</a>
+  </header>
+
+  <div class="hero">
+    <div class="eyebrow">Sample assessment report</div>
+    <h1>Ledgerline &mdash; <span class="em">what a report looks like</span></h1>
+    <p class="lede">
+      Ledgerline is a fictional multi-tenant invoicing product: our own demo application, built
+      with deliberate weaknesses so the whole method can be shown end to end without touching
+      anyone's real system. Everything below is real output from an assessment run on
+      3 October 2026, condensed into the format you would receive. Nothing here is a customer finding.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-n ok">5</div><div class="stat-l">Confirmed live against the running application</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Dependency fixes prepared, re-scanned clean, tests still green</div></div>
+      <div class="stat"><div class="stat-n">804</div><div class="stat-l">Raw engine results condensed into this report</div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Confirmed</div>
+      <h2>Reproduced against the running application</h2>
+      <p>
+        Each of these was proven with real requests against a deployed copy of the application,
+        using two real accounts where the issue is about who can see what. They lead the report
+        because nothing about them is a guess.
+      </p>
+    </div>
+
+    <div class="specimen finding crit">
+      <div class="specimen-head">
+        <span class="chip chip-confirmed">Confirmed</span>
+        <span class="chip chip-crit">Critical</span>
+        <span class="eyebrow push">OWASP A02</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">Unsigned login tokens are accepted</div>
+        <div class="specimen-meta">JWT &lsquo;alg: none&rsquo; &middot; GET /api/auth/me</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Proof</div><div class="ev-val">A real token from a real login was copied with its signature removed and its algorithm set to <code>none</code>. The protected endpoint returned <code>200</code> for both the genuine and the forged token.</div></div>
+          <div class="ev-row"><div class="ev-key">Impact</div><div class="ev-val">The server does not check token signatures, so an attacker who edits the claims inside a token can act as another user.</div></div>
+          <div class="ev-row"><div class="ev-key">Remediation</div><div class="ev-val">Pin the accepted algorithm when verifying tokens. Not auto-patched: authentication code is handed to your team with the exact failing request attached.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen finding crit">
+      <div class="specimen-head">
+        <span class="chip chip-confirmed">Confirmed</span>
+        <span class="chip chip-crit">Critical</span>
+        <span class="eyebrow push">OWASP A02</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">Token signing secret is guessable</div>
+        <div class="specimen-meta">JWT HS256 weak secret &middot; GET /api/auth/me</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Proof</div><div class="ev-val">The signing secret was recovered offline on the first guess from a list of common weak secrets (six characters, shown masked as <code>s****t</code>). A fresh token signed with it was accepted live: <code>200</code>.</div></div>
+          <div class="ev-row"><div class="ev-key">Impact</div><div class="ev-val">Even with the algorithm pinned, an attacker can sign valid tokens.</div></div>
+          <div class="ev-row"><div class="ev-key">Remediation</div><div class="ev-val">Rotate to a long random secret held in your secret store; invalidate existing sessions.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen finding">
+      <div class="specimen-head">
+        <span class="chip chip-confirmed">Confirmed</span>
+        <span class="chip chip-sev">High</span>
+        <span class="eyebrow push">OWASP API1</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">One customer can read another customer's invoices</div>
+        <div class="specimen-meta">Broken object-level authorisation &middot; GET /api/invoices/{id}</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Proof</div><div class="ev-val">Two real accounts in two different organisations. User B requested invoice&nbsp;4, which belongs to User A's organisation, and received it, including a marker value unique to that invoice.</div></div>
+          <div class="ev-row"><div class="ev-key">Impact</div><div class="ev-val">Cross-tenant data exposure by changing a number in the URL.</div></div>
+          <div class="ev-row"><div class="ev-key">Remediation</div><div class="ev-val">Scope the invoice lookup to the caller's organisation. Authorisation logic is left to a reviewer who knows your tenancy model.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen finding">
+      <div class="specimen-head">
+        <span class="chip chip-confirmed">Confirmed</span>
+        <span class="chip chip-sev">High</span>
+        <span class="eyebrow push">OWASP LLM07</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">The in-app AI assistant reveals its system prompt</div>
+        <div class="specimen-meta">System prompt leakage &middot; POST /api/copilot/chat</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Proof</div><div class="ev-val">A known canary string planted in the system prompt, <code>LEDGERLINE-CANARY-SYSTEM-PROMPT-9d41</code>, came back verbatim, along with an internal &ldquo;admin override phrase&rdquo;. A plain baseline question returned a normal answer.</div></div>
+          <div class="ev-row"><div class="ev-key">Impact</div><div class="ev-val">Internal instructions and anything embedded in them are readable by any user.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen finding">
+      <div class="specimen-head">
+        <span class="chip chip-confirmed">Confirmed</span>
+        <span class="chip chip-sev">High</span>
+        <span class="eyebrow push">OWASP LLM01</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">The AI assistant follows injected instructions</div>
+        <div class="specimen-meta">Prompt injection &middot; POST /api/copilot/chat</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Proof</div><div class="ev-val">An instruction to override its guidelines and repeat a unique marker was followed; the marker <code>prompt-injection-verify-6d2bf37cb07cbf39</code> came back verbatim, twice.</div></div>
+          <div class="ev-row"><div class="ev-key">Impact</div><div class="ev-val">User input can redirect the assistant, including toward the tools it can call.</div></div>
+        </div>
+        <p class="caption">In this demo the assistant is a deterministic stand-in for a model, so results are reproducible. Against a real model the same checks run unchanged.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Corroborated</div>
+      <h2>Two independent engines agree</h2>
+      <p>
+        Found by static analysis and flagged independently by two engines from different
+        vendors. Strong signal, but not exercised live, and labelled that way.
+      </p>
+    </div>
+
+    <div class="specimen finding">
+      <div class="specimen-head">
+        <span class="chip chip-sev">Critical &amp; High</span>
+        <span class="eyebrow push">Dependencies &middot; fix verified</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">Known-vulnerable packages: lodash, minimist, node-fetch</div>
+        <div class="specimen-meta">package-lock.json &middot; CVE-2021-44906, CVE-2021-23337, CVE-2020-8203, CVE-2022-0235 and others</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Agreement</div><div class="ev-val">Reported by both dependency engines.</div></div>
+          <div class="ev-row"><div class="ev-key">Fix prepared</div><div class="ev-val">Each moved to the lowest version that resolves it: lodash 4.17.15&nbsp;&rarr;&nbsp;4.18.0, minimist 1.2.5&nbsp;&rarr;&nbsp;1.2.6, node-fetch 2.6.0&nbsp;&rarr;&nbsp;2.6.7.</div></div>
+          <div class="ev-row"><div class="ev-key">Re-scan</div><div class="ev-val">All three confirmed fixed by a re-scan of the patched tree, and independently by a second engine.</div></div>
+          <div class="ev-row"><div class="ev-key">Tests</div><div class="ev-val">The application's own test suite: 19 of 19 passing before the change and 19 of 19 after.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen finding">
+      <div class="specimen-head">
+        <span class="chip chip-sev">High</span>
+        <span class="eyebrow push">Dependencies &middot; no fix prepared</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">Web framework with published bypass advisories: fastify 4.29.1</div>
+        <div class="specimen-meta">package-lock.json &middot; authentication and request-validation bypass advisories</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Agreement</div><div class="ev-val">Reported by both dependency engines.</div></div>
+          <div class="ev-row"><div class="ev-key">Status</div><div class="ev-val">Upgrade not prepared in this pass. Reported as open rather than quietly left out.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen finding crit">
+      <div class="specimen-head">
+        <span class="chip chip-crit">Critical</span>
+        <span class="eyebrow push">Source code</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">Hard-coded secret in application config</div>
+        <div class="specimen-meta">src/config.ts:8</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Agreement</div><div class="ev-val">Flagged independently by two static analysis engines.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen finding crit">
+      <div class="specimen-head">
+        <span class="chip chip-crit">Critical &amp; High</span>
+        <span class="eyebrow push">Infrastructure</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">Cluster and cloud configuration</div>
+        <div class="specimen-meta">deploy/k8s/ledgerline.yaml &middot; deploy/terraform/main.tf &middot; Dockerfile</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Kubernetes</div><div class="ev-val">A cluster role with every verb on every resource (line 82); the app container runs privileged with <code>SYS_ADMIN</code> (line 33).</div></div>
+          <div class="ev-row"><div class="ev-key">Cloud</div><div class="ev-val">A firewall rule open to any address (line 69); a storage bucket that allows public access (line 95).</div></div>
+          <div class="ev-row"><div class="ev-key">Container</div><div class="ev-val">The image runs as root. Its end-of-life base image carries 512 known-vulnerable packages; a trial rebuild on a current slim base built cleanly and cut that to 330 (critical 14&nbsp;&rarr;&nbsp;9, high 151&nbsp;&rarr;&nbsp;88).</div></div>
+          <div class="ev-row"><div class="ev-key">Agreement</div><div class="ev-val">Each configuration item flagged by both infrastructure engines.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Single engine</div>
+      <h2>Worth a look, labelled as unproven</h2>
+      <p>One engine saw these and nothing else confirmed them. They are reported, ranked last, and never presented as vulnerabilities.</p>
+    </div>
+
+    <div class="specimen finding single">
+      <div class="specimen-head">
+        <span class="chip chip-single">Single engine</span>
+        <span class="chip chip-sev">High</span>
+      </div>
+      <div class="specimen-body">
+        <div class="specimen-title">SQL string assembled from request input</div>
+        <div class="specimen-meta">src/routes/users.ts:41</div>
+        <div class="evidence">
+          <div class="ev-row"><div class="ev-key">Status</div><div class="ev-val">Pattern match from one engine; the second did not flag it and it was not reproduced live. Needs a reviewer, not a fire drill.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Limits</div>
+      <h2>What this assessment did not cover</h2>
+    </div>
+    <ul class="limits">
+      <li>An unauthenticated passive web scan plus API schema fuzzing found one low-severity item (cacheable responses). The serious issues above are about authorisation, sessions and the AI assistant, which that kind of scan cannot see; that is why the targeted, logged-in checks exist.</li>
+      <li>Infrastructure fixes were not prepared in this run. They are model-assisted and that option was switched off; the findings stand without them.</li>
+      <li>No live cloud account was in scope, so deployed cloud configuration was not assessed &mdash; only the Terraform that describes it.</li>
+      <li>Of the 804 raw results, 522 are individual vulnerable packages inside the container image. The full list ships as a machine-readable appendix (JSON and SARIF) rather than as pages of this report.</li>
+    </ul>
+  </section>
+
+  <div class="cta">
+    <h2>Want this for your own application?</h2>
+    <p>The first assessment is on us: one repository, one report, no obligation.</p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request an assessment</a>
+      <span class="btn-note">Reply within two business days.</span>
+    </div>
+  </div>
+
+  <footer>
+    <div>Verdict Runtime &mdash; application and AI security assessment</div>
+    <div>Israel &middot; <a href="mailto:boazg@verdictruntime.com">boazg@verdictruntime.com</a></div>
+    <div><a href="./">Overview</a></div>
+  </footer>
+
+</div>
+
+<div id="consent-banner" class="consent" hidden role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <p>
+    This page uses Google Analytics to see which pages get read and where visitors come
+    from. It only runs if you say yes, and nothing loads before that.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn consent-btn-ghost">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn consent-btn-solid">Accept</button>
+  </div>
+</div>
+
+</body>
+</html>
