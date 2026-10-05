@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Verdict Runtime - Proof, Not Findings</title>
-<meta name="description" content="Application and AI security assessment. Findings are corroborated by two independent engines and reproduced against a running target before they are called confirmed - with verified remediation.">
+<meta name="description" content="Application and AI security assessment. Findings are corroborated across independent engines and, where a safe proof exists, reproduced against a running target before they are called confirmed - with verified remediation.">
 <link rel="canonical" href="https://verdictruntime.com/product">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Verdict Runtime">
 <meta property="og:title" content="Verdict Runtime - Proof, Not Findings">
-<meta property="og:description" content="Application and AI security assessment. Findings are corroborated by two independent engines and reproduced against a running target before they are called confirmed - with verified remediation.">
+<meta property="og:description" content="Application and AI security assessment. Findings are corroborated across independent engines and, where a safe proof exists, reproduced against a running target before they are called confirmed - with verified remediation.">
 <meta property="og:url" content="https://verdictruntime.com/product">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Verdict Runtime - Proof, Not Findings">
-<meta name="twitter:description" content="Application and AI security assessment. Findings are corroborated by two independent engines and reproduced against a running target before they are called confirmed - with verified remediation.">
+<meta name="twitter:description" content="Application and AI security assessment. Findings are corroborated across independent engines and, where a safe proof exists, reproduced against a running target before they are called confirmed - with verified remediation.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,10 +103,11 @@
           <div class="rung-bar w2 r2"></div>
           <h3>Two independent engines agree</h3>
           <p>
-            Every class is covered by two engines built by different teams, and findings are
-            correlated across them. Agreement between two independent implementations is a
-            materially stronger signal than either one alone, and it is the single most
-            effective filter we have against false positives.
+            Dependencies, source code and infrastructure are each covered by two engines built
+            by different teams, and findings are correlated across them. Agreement between two
+            independent implementations is a materially stronger signal than either one alone,
+            and it is the single most effective filter we have against false positives. Where
+            only one engine exists for a class, its findings stay labelled as single-engine.
           </p>
         </div>
       </div>
@@ -348,12 +349,12 @@
       <div class="proof-item">
         <dt>Ships fixes, not just findings</dt>
         <dd>
-          We have opened seven pull requests that patch real CVEs in active, real-world
+          We have opened nine pull requests that patch real CVEs in active, real-world
           open-source projects &mdash; not synthetic benchmarks, and not projects that pay us.
           One has been reviewed and merged upstream by a project's own maintainers. A second was
           closed because the maintainer read it, agreed, and shipped the same dependency fix
-          himself within minutes of the pull request landing in his inbox &mdash; the vulnerable
-          versions are gone from that project either way. Five remain open. Those two outcomes
+          within minutes of receiving the pull request &mdash; the vulnerable versions are gone
+          from that project either way. Seven remain open. Those two outcomes
           are a harder test than any benchmark score: someone outside this company had to read
           the reasoning and agree the fix was correct.
         </dd>
