@@ -23,7 +23,7 @@ Caddy that fronts the app. `verdictruntime.com/product/` serves the files in
 To publish a change, from this directory:
 
 ```bash
-tar cz index.html sample-report.html styles.css consent.js favicon.svg robots.txt sitemap.xml \
+tar cz index.html sample-report.html styles.css consent.js favicon.svg robots.txt sitemap.xml demo.mp4 demo-poster.jpg \
   | gcloud compute ssh code-scanner --zone=us-central1-a \
       --command='sudo tar xz --no-same-owner -C /var/www/verdict-marketing'
 ```

@@ -481,3 +481,7 @@ img { max-width: 100%; }
 .finding.single { border-left-color: var(--line-strong); }
 .limits li { margin: 8px 0; color: var(--text-muted); font-size: 14.5px; }
 .back { font-size: 14px; color: var(--accent-deep); }
+.demo {
+  display: block; width: 100%; height: auto; aspect-ratio: 1920 / 996;
+  background: #080C10; border: 1px solid var(--line); border-radius: 3px; box-shadow: var(--shadow);
+}

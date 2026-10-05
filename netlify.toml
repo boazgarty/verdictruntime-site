@@ -16,7 +16,7 @@
     # after a visitor accepts the cookie banner, Google's gtag.js - both
     # named explicitly rather than opened up with 'unsafe-inline'. Styles
     # load from a stylesheet file and Google Fonts, never inline.
-    Content-Security-Policy = "default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
