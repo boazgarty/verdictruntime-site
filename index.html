@@ -3,333 +3,309 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Verdict Runtime - Proof, Not Findings</title>
-<meta name="description" content="Application and AI security assessment. Findings are corroborated across independent engines and, where a safe proof exists, reproduced against a running target before they are called confirmed - with verified remediation.">
+<title>Verdict Runtime - Verdicts, With Proof</title>
+<meta name="description" content="Application and AI security that proves what it reports. Scan, verify findings live against your running app, pentest, fix with proof, and defend until the fix ships.">
 <link rel="canonical" href="https://verdictruntime.com/product">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Verdict Runtime">
-<meta property="og:title" content="Verdict Runtime - Proof, Not Findings">
-<meta property="og:description" content="Application and AI security assessment. Findings are corroborated across independent engines and, where a safe proof exists, reproduced against a running target before they are called confirmed - with verified remediation.">
+<meta property="og:title" content="Verdict Runtime - We don't report risks. We deliver verdicts, with proof.">
+<meta property="og:description" content="Application and AI security that proves what it reports. Scan, verify live, pentest, fix with proof, and defend until the fix ships.">
 <meta property="og:url" content="https://verdictruntime.com/product">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Verdict Runtime - Proof, Not Findings">
-<meta name="twitter:description" content="Application and AI security assessment. Findings are corroborated across independent engines and, where a safe proof exists, reproduced against a running target before they are called confirmed - with verified remediation.">
+<meta name="twitter:title" content="Verdict Runtime - We don't report risks. We deliver verdicts, with proof.">
+<meta name="twitter:description" content="Application and AI security that proves what it reports. Scan, verify live, pentest, fix with proof, and defend until the fix ships.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=4">
 <script defer src="consent.js"></script>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="masthead">
-    <div class="wordmark"><span class="mark"></span>Verdict<span class="wordmark-2">Runtime</span></div>
-    <div class="eyebrow">Application &amp; AI security assessment</div>
-  </header>
+<nav class="topnav" aria-label="Main">
+  <div class="topnav-in">
+    <a class="wordmark" href="#top"><span class="mark"></span>Verdict<span class="wordmark-2">Runtime</span></a>
+    <div class="topnav-links">
+      <a href="#how">How it works</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#defense">Defense</a>
+      <a href="#deploy">Deployment</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
 
   <div class="hero">
-    <h1>We only report what we <span class="em">proved</span>.</h1>
+    <div class="eyebrow">Application &amp; AI security</div>
+    <h1>We don't report risks. We deliver <span class="em">verdicts</span>, with proof.</h1>
     <p class="lede">
-      Most scanners hand you a queue. Yours fills with rule matches nobody has confirmed,
-      and the real issue sits on page four behind forty things that were never exploitable.
-      Verdict Runtime is built the other way around: a finding has to earn its severity
-      before it reaches you, it tells you exactly what evidence it has &mdash; and where
-      we can fix it, we hand you the fix with proof that it worked.
+      Scanners hand you a queue of guesses. Verdict Runtime proves which findings are
+      exploitable against your running app, hands you the fix, and keeps you protected
+      until it ships.
     </p>
     <div class="cta-row">
       <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
-      <a class="btn btn-ghost" href="sample-report.html">See a sample report</a>
+      <a class="btn btn-ghost" href="#demo">Watch the 3-minute demo</a>
     </div>
 
-    <div class="specimen">
-      <div class="specimen-head">
-        <span class="chip chip-confirmed">Confirmed</span>
-        <span class="chip chip-sev">High</span>
-        <span class="eyebrow push">Example finding</span>
-      </div>
-      <div class="specimen-body">
-        <div class="specimen-title">SQL injection in product sort parameter</div>
-        <div class="specimen-meta">CWE-89 &middot; app/routes/products.py:142 &middot; GET /api/products?sort=</div>
-
-        <div class="evidence">
-          <div class="ev-row">
-            <div class="ev-key">Agreement</div>
-            <div class="ev-val">Flagged independently by two static analysis engines</div>
-          </div>
-          <div class="ev-row">
-            <div class="ev-key">Reachable</div>
-            <div class="ev-val">Route resolves to this handler; parameter reaches the query unsanitised</div>
-          </div>
-          <div class="ev-row">
-            <div class="ev-key">Proof</div>
-            <div class="ev-val">Boolean-difference confirmed live in an egress-locked sandbox &mdash; <code>' AND 1=1--</code> returned 24 rows, <code>' AND 1=2--</code> returned 0</div>
-          </div>
-          <div class="ev-row">
-            <div class="ev-key">Remediation</div>
-            <div class="ev-val">Parameterised-query patch prepared; re-scan clean and your test suite still green</div>
-          </div>
-        </div>
-        <p class="caption">Illustrative example of the report format, not a real customer finding.</p>
-      </div>
-    </div>
+    <ul class="trust-strip">
+      <li><strong>Live proof</strong><span>before anything is called confirmed</span></li>
+      <li><strong>2 engines</strong><span>on code, dependencies and IaC</span></li>
+      <li><strong>OWASP Top 10</strong><span>Web, API and LLM covered</span></li>
+      <li><strong>Your network</strong><span>self-host, and code never leaves it</span></li>
+    </ul>
   </div>
 
-  <section id="demo">
-    <div class="sec-head">
-      <div class="eyebrow">Demo</div>
-      <h2>Two minutes in the product</h2>
-      <p>
-        Run against deliberately vulnerable open-source training applications: a finding verified
-        live against the running app, the fix prepared for it, and a vulnerable dependency patched.
-        Account details and repository names are blurred.
-      </p>
-    </div>
+  <section id="demo" class="demo-sec">
     <video class="demo" controls preload="none" playsinline poster="demo-poster.jpg">
-      <source src="demo.mp4?v=3" type="video/mp4">
-      Your browser cannot play this video. <a href="demo.mp4?v=3">Download it</a> instead.
+      <source src="demo.mp4?v=5" type="video/mp4">
+      Your browser cannot play this video. <a href="demo.mp4?v=5">Download it</a> instead.
     </video>
+    <p class="caption">
+      Scan, live verification, the fix, a credentialed pentest and the defense layer, run end to end
+      against our own deliberately vulnerable demo applications.
+    </p>
   </section>
 
   <section>
+    <div class="value3">
+      <div class="value">
+        <div class="value-n">01</div>
+        <h3>Stop triaging guesses</h3>
+        <p>Every finding is labelled with its evidence: one engine, two independent engines, or reproduced live.</p>
+      </div>
+      <div class="value">
+        <div class="value-n">02</div>
+        <h3>Fix with proof</h3>
+        <p>Patches are re-scanned and run against your own test suite before they reach you.</p>
+      </div>
+      <div class="value">
+        <div class="value-n">03</div>
+        <h3>Protected before the fix ships</h3>
+        <p>Optional WAF, gateway and detection rules generated from your findings, starting in observe mode.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
     <div class="sec-head">
-      <div class="eyebrow">How a finding earns its place</div>
-      <h2>Three levels of evidence, labelled on every finding</h2>
-      <p>
-        Nothing is silently promoted. Each finding carries the reason it holds the rank it does,
-        so triage starts from evidence instead of a rule identifier.
-      </p>
+      <div class="eyebrow">How it works</div>
+      <h2>Find it. Prove it. Fix it. Protect it.</h2>
+      <p>One loop from first scan to final verdict. Every step is optional: use only what you need.</p>
     </div>
 
-    <div class="ladder">
-      <div class="rung">
-        <div class="rung-label r1">SINGLE_TOOL</div>
-        <div>
-          <div class="rung-bar w1 r1"></div>
-          <h3>One engine saw it</h3>
-          <p>
-            Reported, ranked below corroborated findings, and marked as uncorroborated.
-            Useful signal, presented as exactly that rather than as a confirmed vulnerability.
-          </p>
+    <ol class="loop">
+      <li class="loop-step">
+        <div class="step-n">01 &middot; SCAN</div>
+        <h3>See the whole surface</h3>
+        <p>Code, dependencies, secrets, infrastructure, licenses and containers in one pass, or bring your existing SAST results as SARIF.</p>
+      </li>
+      <li class="loop-step">
+        <div class="step-n">02 &middot; PROVE</div>
+        <h3>Verify against the live app</h3>
+        <p>A reviewed, non-destructive proof runs in an isolated sandbox. No reproduction, no &ldquo;confirmed&rdquo;.</p>
+      </li>
+      <li class="loop-step">
+        <div class="step-n">03 &middot; PENTEST</div>
+        <h3>Test it like an attacker</h3>
+        <p>Logged in as a real user: API discovery and fuzzing, access-control tests, and LLM security checks.</p>
+      </li>
+      <li class="loop-step">
+        <div class="step-n">04 &middot; FIX</div>
+        <h3>Ship a verified fix</h3>
+        <p>A reviewable diff or pull request, re-scanned and tested. Never merged on your behalf.</p>
+      </li>
+      <li class="loop-step">
+        <div class="step-n">05 &middot; DEFEND</div>
+        <h3>Shield it meanwhile</h3>
+        <p>WAF, gateway and detection rules generated from your findings, in observe mode first.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="split">
+      <div class="sec-head">
+        <div class="eyebrow">The verdict</div>
+        <h2>Every finding says how sure we are</h2>
+        <p>Nothing is silently promoted. Triage starts from evidence instead of a rule identifier.</p>
+        <div class="ladder ladder-compact">
+          <div class="rung">
+            <div class="rung-label r1">SINGLE_TOOL</div>
+            <div><h3>One engine saw it</h3><p>Reported and ranked lower, labelled as uncorroborated.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r2">HIGH</div>
+            <div><h3>Two independent engines agree</h3><p>Code, dependencies and infrastructure each run two engines, built by different teams.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r3">CONFIRMED</div>
+            <div><h3>Reproduced against your running app</h3><p>Injection, XSS, open redirect, XXE and command injection, proven live and safely.</p></div>
+          </div>
         </div>
       </div>
 
-      <div class="rung">
-        <div class="rung-label r2">HIGH</div>
-        <div>
-          <div class="rung-bar w2 r2"></div>
-          <h3>Two independent engines agree</h3>
-          <p>
-            Dependencies, source code and infrastructure are each covered by two engines built
-            by different teams, and findings are correlated across them. Agreement between two
-            independent implementations is a materially stronger signal than either one alone,
-            and it is the single most effective filter we have against false positives. Where
-            only one engine exists for a class, its findings stay labelled as single-engine.
-          </p>
+      <div class="specimen">
+        <div class="specimen-head">
+          <span class="chip chip-confirmed">Confirmed</span>
+          <span class="chip chip-sev">High</span>
+          <span class="eyebrow push">Example finding</span>
         </div>
-      </div>
-
-      <div class="rung">
-        <div class="rung-label r3">CONFIRMED</div>
-        <div>
-          <div class="rung-bar w3 r3"></div>
-          <h3>Reproduced against a running target</h3>
-          <p>
-            For the classes where a safe proof exists &mdash; injection, cross-site scripting,
-            open redirect, XXE, command injection &mdash; a hand-written, reviewed proof runs
-            against your deployed application inside a network-isolated sandbox whose egress is
-            locked to your target alone. If it does not reproduce, it does not get called confirmed.
-          </p>
+        <div class="specimen-body">
+          <div class="specimen-title">SQL injection in product sort parameter</div>
+          <div class="specimen-meta">CWE-89 &middot; app/routes/products.py:142 &middot; GET /api/products?sort=</div>
+          <div class="evidence">
+            <div class="ev-row"><div class="ev-key">Agreement</div><div class="ev-val">Flagged independently by two static analysis engines</div></div>
+            <div class="ev-row"><div class="ev-key">Reachable</div><div class="ev-val">Route resolves to this handler; parameter reaches the query unsanitised</div></div>
+            <div class="ev-row"><div class="ev-key">Proof</div><div class="ev-val">Boolean difference confirmed live in an egress-locked sandbox: <code>' AND 1=1--</code> returned 24 rows, <code>' AND 1=2--</code> returned 0</div></div>
+            <div class="ev-row"><div class="ev-key">Fix</div><div class="ev-val">Parameterised-query patch; re-scan clean, your test suite still green</div></div>
+          </div>
+          <p class="caption">Illustrative example of the report format, not a real customer finding.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="coverage">
     <div class="sec-head">
       <div class="eyebrow">Coverage</div>
-      <h2>One normalised report across the whole surface</h2>
-      <p>
-        Static analysis, dependencies, infrastructure, the running application and your AI
-        features all land in a single schema with consistent severity, location and confidence,
-        then get deduplicated and correlated &mdash; so you read one report, not six.
-      </p>
+      <h2>One report across your whole stack</h2>
+      <p>Every engine lands in one schema, deduplicated and correlated, so you read one report, not six.</p>
     </div>
 
     <div class="grid2">
       <div class="cell">
         <h3><span class="dot"></span>Dependencies &amp; supply chain</h3>
-        <p>Known-vulnerable packages, whether the affected code is actually reachable from your entry points, and a signed software bill of materials you can attach to a release.</p>
+        <p>Vulnerable packages, whether they're reachable from your entry points, and a signed SBOM.</p>
         <div class="cell-note">Reachability &middot; SBOM &middot; signing &middot; VEX</div>
       </div>
       <div class="cell">
         <h3><span class="dot"></span>Source code</h3>
-        <p>Injection, authentication, access-control and cryptography defects, cross-correlated between two engines before anything is ranked high.</p>
+        <p>Injection, auth, access-control and crypto defects, cross-checked by two engines.</p>
         <div class="cell-note">~20 in-house rules for gaps the market misses</div>
       </div>
       <div class="cell">
-        <h3><span class="dot"></span>Secrets, infrastructure &amp; pipelines</h3>
-        <p>Committed credentials, cloud and Kubernetes misconfiguration, and build-pipeline weaknesses that let a workflow be hijacked.</p>
-        <div class="cell-note">Cloud posture &middot; container images &middot; CI workflows</div>
+        <h3><span class="dot"></span>Secrets, cloud &amp; pipelines</h3>
+        <p>Committed credentials, cloud and Kubernetes misconfiguration, hijackable CI workflows.</p>
+        <div class="cell-note">Cloud posture &middot; container images &middot; CI</div>
       </div>
       <div class="cell">
         <h3><span class="dot"></span>Running application</h3>
-        <p>Authenticated dynamic testing against a deployed environment, including broken object-level and function-level authorisation that only appears when two real accounts are compared.</p>
+        <p>Authenticated testing, including broken authorization that only shows when two real accounts are compared.</p>
         <div class="cell-note">20 targeted checks &middot; OWASP API1&ndash;10 &middot; A01&ndash;A10</div>
       </div>
       <div class="cell">
         <h3><span class="dot"></span>AI &amp; LLM features</h3>
-        <p>Live adversarial testing of the model-backed parts of your product, covering the full OWASP Top 10 for LLM Applications plus emerging agentic threats.</p>
+        <p>Live adversarial testing of your model-backed features, judged against planted canaries and markers, not a model's opinion.</p>
         <div class="cell-note">21 checks &middot; LLM01&ndash;LLM10 &middot; agentic</div>
       </div>
       <div class="cell">
-        <h3><span class="dot"></span>Remediation</h3>
-        <p>Fixes prepared as reviewable patches, each re-scanned and run against your own test suite before it reaches you.</p>
-        <div class="cell-note">Dependency &middot; code &middot; infrastructure &middot; pipeline</div>
+        <h3><span class="dot"></span>Business logic</h3>
+        <p>An agent that learns your app's real API traffic, then tests rules like double-redeemed coupons and replayed checkouts.</p>
+        <div class="cell-note">Uncertain results are labelled for review</div>
       </div>
     </div>
+
+    <details class="more">
+      <summary>See the AI &amp; LLM checks and what each one proves</summary>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>OWASP</th><th>Check</th><th>What a finding proves</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="id">LLM01</td><td class="what">Prompt injection</td><td class="proves">A crafted instruction overrode the system prompt and returned an exact attacker-chosen marker.</td></tr>
+            <tr><td class="id">LLM01</td><td class="what">Indirect prompt injection</td><td class="proves">An instruction planted in fetched content &mdash; not in the user's message &mdash; was followed.</td></tr>
+            <tr><td class="id">LLM01</td><td class="what">Multi-turn escalation</td><td class="proves">Defences that hold on a single message fail across a real multi-turn conversation.</td></tr>
+            <tr><td class="id">LLM02</td><td class="what">Sensitive information disclosure</td><td class="proves">A canary secret planted in your own data came back in a model response.</td></tr>
+            <tr><td class="id">LLM03</td><td class="what">Plugin and tool enumeration</td><td class="proves">The model disclosed the real integrations it can reach when asked to list them.</td></tr>
+            <tr><td class="id">LLM04</td><td class="what">Persistent data poisoning</td><td class="proves">Content written by one account changed what a different account was told, on a fresh session.</td></tr>
+            <tr><td class="id">LLM05</td><td class="what">Improper output handling</td><td class="proves">Model output reached the page or a downstream system without escaping.</td></tr>
+            <tr><td class="id">LLM06</td><td class="what">Excessive agency</td><td class="proves">The model invoked a sensitive tool outside the user's stated intent.</td></tr>
+            <tr><td class="id">LLM07</td><td class="what">System prompt leakage</td><td class="proves">A known verbatim fragment of your own system prompt was recovered.</td></tr>
+            <tr><td class="id">LLM08</td><td class="what">Cross-tenant retrieval leakage</td><td class="proves">Retrieval crossed a tenant boundary and returned another tenant's canary.</td></tr>
+            <tr><td class="id">LLM08</td><td class="what">Knowledge-base poisoning</td><td class="proves">A document submitted through your own product changed later answers after sync.</td></tr>
+            <tr><td class="id">LLM09</td><td class="what">Hallucination under pressure</td><td class="proves">The model produced confident technical detail about an entity that does not exist.</td></tr>
+            <tr><td class="id">LLM10</td><td class="what">Unbounded consumption</td><td class="proves">Oversized input and long conversations were accepted with no effective cap.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Agent code execution</td><td class="proves">The agent ran an attacker-supplied command through its own execution tool.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Tool parameter injection</td><td class="proves">An authorised tool was re-invoked with an out-of-scope parameter value.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Agent-to-agent trust</td><td class="proves">A message claiming another agent's identity was accepted without verification.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Identity and guardrail erosion</td><td class="proves">Sustained reframing across turns moved the model off its assigned identity and limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Seventeen of twenty-one checks shown. Every one requires your written authorisation before it sends a single request.</p>
+    </details>
   </section>
 
-  <section>
+  <section id="defense">
     <div class="sec-head">
-      <div class="eyebrow">AI security</div>
-      <h2>Your AI features tested the way an attacker would</h2>
+      <div class="eyebrow">Defense layer &middot; optional</div>
+      <h2>Protected today, while the fix is in review</h2>
       <p>
-        Most security tooling has no model of what an LLM feature can be talked into doing. These
-        checks send real adversarial traffic at your live endpoint and judge the response against
-        something concrete &mdash; a planted canary, a marker string, a tool name that should never
-        have been reachable &mdash; rather than asking a model whether the answer looked unsafe.
+        Code fixes take a sprint. The defense layer turns findings into protection you can review
+        and deploy now. We generate the artifacts; you decide what goes live.
       </p>
     </div>
 
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>OWASP</th><th>Check</th><th>What a finding proves</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="id">LLM01</td><td class="what">Prompt injection</td><td class="proves">A crafted instruction overrode the system prompt and returned an exact attacker-chosen marker.</td></tr>
-          <tr><td class="id">LLM01</td><td class="what">Indirect prompt injection</td><td class="proves">An instruction planted in fetched content &mdash; not in the user's message &mdash; was followed.</td></tr>
-          <tr><td class="id">LLM01</td><td class="what">Multi-turn escalation</td><td class="proves">Defences that hold on a single message fail across a real multi-turn conversation.</td></tr>
-          <tr><td class="id">LLM02</td><td class="what">Sensitive information disclosure</td><td class="proves">A canary secret planted in your own data came back in a model response.</td></tr>
-          <tr><td class="id">LLM03</td><td class="what">Plugin and tool enumeration</td><td class="proves">The model disclosed the real integrations it can reach when asked to list them.</td></tr>
-          <tr><td class="id">LLM04</td><td class="what">Persistent data poisoning</td><td class="proves">Content written by one account changed what a different account was told, on a fresh session.</td></tr>
-          <tr><td class="id">LLM05</td><td class="what">Improper output handling</td><td class="proves">Model output reached the page or a downstream system without escaping.</td></tr>
-          <tr><td class="id">LLM06</td><td class="what">Excessive agency</td><td class="proves">The model invoked a sensitive tool outside the user's stated intent.</td></tr>
-          <tr><td class="id">LLM07</td><td class="what">System prompt leakage</td><td class="proves">A known verbatim fragment of your own system prompt was recovered.</td></tr>
-          <tr><td class="id">LLM08</td><td class="what">Cross-tenant retrieval leakage</td><td class="proves">Retrieval crossed a tenant boundary and returned another tenant's canary.</td></tr>
-          <tr><td class="id">LLM08</td><td class="what">Knowledge-base poisoning</td><td class="proves">A document submitted through your own product changed later answers after sync.</td></tr>
-          <tr><td class="id">LLM09</td><td class="what">Hallucination under pressure</td><td class="proves">The model produced confident technical detail about an entity that does not exist.</td></tr>
-          <tr><td class="id">LLM10</td><td class="what">Unbounded consumption</td><td class="proves">Oversized input and long conversations were accepted with no effective cap.</td></tr>
-          <tr><td class="id">Agentic</td><td class="what">Agent code execution</td><td class="proves">The agent ran an attacker-supplied command through its own execution tool.</td></tr>
-          <tr><td class="id">Agentic</td><td class="what">Tool parameter injection</td><td class="proves">An authorised tool was re-invoked with an out-of-scope parameter value.</td></tr>
-          <tr><td class="id">Agentic</td><td class="what">Agent-to-agent trust</td><td class="proves">A message claiming another agent's identity was accepted without verification.</td></tr>
-          <tr><td class="id">Agentic</td><td class="what">Identity and guardrail erosion</td><td class="proves">Sustained reframing across turns moved the model off its assigned identity and limits.</td></tr>
-        </tbody>
-      </table>
+    <div class="grid3">
+      <div class="cell"><h3><span class="dot"></span>WAF rules</h3><p>Virtual patches for AWS WAF, Cloudflare and Google Cloud Armor, written only for exploits we confirmed.</p></div>
+      <div class="cell"><h3><span class="dot"></span>API gateway policies</h3><p>Gateway policies from what the pentest found, with an honest note where a gateway can't enforce the fix.</p></div>
+      <div class="cell"><h3><span class="dot"></span>Kubernetes admission</h3><p>Admission policies that can block the misconfigurations your scan found.</p></div>
+      <div class="cell"><h3><span class="dot"></span>Runtime detection</h3><p>Detection rules that alert when someone attacks the exact weakness you have.</p></div>
+      <div class="cell"><h3><span class="dot"></span>Secret rotation</h3><p>Step-by-step runbooks for every leaked credential, per provider.</p></div>
+      <div class="cell"><h3><span class="dot"></span>LLM guardrails</h3><p>Guardrail configurations against the prompt attacks that actually worked on your app.</p></div>
     </div>
-    <p class="caption">Seventeen of twenty-one checks shown. Every one requires your written authorisation before it sends a single request.</p>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="eyebrow">AI-driven dynamic testing</div>
-      <h2>An agent that probes your business logic, not just your code</h2>
-      <p>
-        Some flaws are invisible to any rule because nothing about them is syntactically wrong.
-        A coupon that can be redeemed twice, a cart that accepts a negative quantity, a checkout
-        that can be replayed at yesterday's price &mdash; the code is fine, the logic is not.
-      </p>
-    </div>
-
-    <div class="grid2">
-      <div class="cell">
-        <h3><span class="dot"></span>It learns your application first</h3>
-        <p>A real browser session walks your product the way a user does, capturing every API call the pages actually make &mdash; including the ones absent from your documentation. Captured calls are linked into a dependency graph, so a request needing a real order identifier gets one that genuinely exists.</p>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>Then it forms and tests hypotheses</h3>
-        <p>A model is given the real captured traffic and asked what the business rules appear to be and how they might be broken. It sends real requests, reads the real responses, and adapts &mdash; a loop closer to a tester probing your app than to a scanner replaying a payload list.</p>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>Deterministic rules where you want certainty</h3>
-        <p>You can also state invariants directly &mdash; a total must equal quantity times unit price, a balance must never go negative &mdash; and have them checked against live responses. A violation is a confirmed finding, not a judgement call.</p>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>Uncertainty is labelled, never hidden</h3>
-        <p>Model-driven results are marked as needing review rather than promoted to confirmed. A machine that suggests a lead is useful; a machine that reports its own guesses as facts is the reason your queue is full.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="eyebrow">Remediation</div>
-      <h2>A fix, and the evidence it worked</h2>
-      <p>
-        Reporting a problem is the easy half. For dependency, code, infrastructure and pipeline
-        findings, we prepare the change and then prove it &mdash; because an unverified fix is
-        just another claim.
-      </p>
-    </div>
-
-    <div class="flow">
-      <div class="step">
-        <div class="step-n">STEP 01</div>
-        <h3>Prepare the change</h3>
-        <p>
-          A dependency is moved to the lowest version that actually resolves the issue, with the
-          upstream changelog summarised so you can see what else moves with it. Code, infrastructure
-          and workflow fixes come as a diff against the real file, scoped to the finding.
-        </p>
-      </div>
-      <div class="step">
-        <div class="step-n">STEP 02</div>
-        <h3>Re-scan to confirm</h3>
-        <p>
-          The same analysis runs again against the patched tree. The finding has to be gone, and no
-          new finding may appear in its place. This step is deterministic &mdash; no model is asked
-          whether the fix looks correct.
-        </p>
-      </div>
-      <div class="step">
-        <div class="step-n">STEP 03</div>
-        <h3>Prove nothing broke</h3>
-        <p>
-          Your own test suite runs against the patched code. If a fix turns a vulnerability into an
-          outage, that is not a fix, and you find out from us rather than from production.
-        </p>
-      </div>
-    </div>
-
     <p class="flow-note">
-      Nothing is committed, pushed or merged on your behalf. Every change arrives as a reviewable
-      diff or a pull request you open yourself, with the verification results attached &mdash;
-      and any fix we could not verify is handed over labelled as exactly that.
+      <strong>Observe before enforce.</strong> Every artifact ships in detect-only mode, so nothing is
+      blocked until you're ready. And a coverage matrix names, honestly, what no rule can defend.
     </p>
   </section>
 
-  <section>
+  <section id="deploy">
     <div class="sec-head">
-      <div class="eyebrow">Authorisation</div>
-      <h2>Nothing runs without your written scope</h2>
+      <div class="eyebrow">Deployment</div>
+      <h2>Runs where you need it</h2>
     </div>
 
+    <div class="deploy3">
+      <div class="deploy">
+        <div class="deploy-tag">Self-hosted</div>
+        <h3>Your container, your network</h3>
+        <p>Run the scanner in your own environment or CI. Your code never leaves your network; send only the results if you want the dashboard.</p>
+      </div>
+      <div class="deploy">
+        <div class="deploy-tag">Hosted</div>
+        <h3>Point us at a repository</h3>
+        <p>We run it for you. Your code is deleted automatically within an hour of the scan, or immediately on request.</p>
+      </div>
+      <div class="deploy">
+        <div class="deploy-tag">Bring your scanner</div>
+        <h3>Keep the tools you have</h3>
+        <p>Already using a SAST tool? Import its SARIF results straight into the fix workflow.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="gate">
       <div>
+        <div class="eyebrow">Authorisation</div>
+        <h2 class="gate-h">Nothing runs without your written scope</h2>
         <p>
-          Every agent that can send a single packet at a target checks it against a scope file you
-          write and sign off. The check is compiled into the tool, not a setting &mdash; no scope
-          entry means the run exits before it touches a key or a report. There is no permissive mode.
+          Every agent that can send traffic checks the target against a scope file your team
+          signs off. The check is compiled in, not a setting. No entry, no run.
         </p>
         <ul class="tiers">
-          <li><span>&rsaquo;</span><div>Reading your source needs only a repository entry.</div></li>
-          <li><span>&rsaquo;</span><div>Live traffic needs a separate, explicit dynamic authorisation.</div></li>
-          <li><span>&rsaquo;</span><div>Logging in as a real account needs a further credentialed grant.</div></li>
-          <li><span>&rsaquo;</span><div>Anything that writes data requires a disposable-target attestation, and is never assumed from the tiers above.</div></li>
+          <li><span>&rsaquo;</span><div>Reading source needs only a repository entry.</div></li>
+          <li><span>&rsaquo;</span><div>Live traffic and logged-in testing each need their own explicit grant.</div></li>
+          <li><span>&rsaquo;</span><div>Anything that writes data needs a separate disposable-target attestation.</div></li>
         </ul>
       </div>
       <div>
@@ -348,104 +324,74 @@
   <section>
     <div class="sec-head">
       <div class="eyebrow">Why trust the method</div>
-      <h2>The discipline is checkable</h2>
-      <p>
-        The same standard applied to the product is applied to its own claims. We test this
-        tool by fixing real security bugs in open-source projects that are not our customers,
-        owe us nothing, and review the work in public. Four commitments we hold ourselves to.
-      </p>
+      <h2>Held to the standard it sells</h2>
+      <p>We test this tool by fixing real security bugs in open-source projects that owe us nothing and review the work in public.</p>
     </div>
 
-    <dl class="proof">
-      <div class="proof-item">
-        <dt>Contributed upstream</dt>
-        <dd>
-          We publish detection rules into the open-source ecosystem rather than keeping every
-          improvement private. Two rules have been submitted back to the community rule sets the
-          industry already relies on; both are still open for review, and we describe them as
-          submitted rather than accepted until a maintainer says otherwise.
-        </dd>
-      </div>
-      <div class="proof-item">
-        <dt>Ships fixes, not just findings</dt>
-        <dd>
-          We have opened nine pull requests that patch real CVEs in active, real-world
-          open-source projects &mdash; not synthetic benchmarks, and not projects that pay us.
-          One has been reviewed and merged upstream by a project's own maintainers. A second was
-          closed because the maintainer read it, agreed, and shipped the same dependency fix
-          within minutes of receiving the pull request &mdash; the vulnerable versions are gone
-          from that project either way. Seven remain open. Those two outcomes
-          are a harder test than any benchmark score: someone outside this company had to read
-          the reasoning and agree the fix was correct.
-        </dd>
-      </div>
-      <div class="proof-item">
-        <dt>Validated against real code</dt>
-        <dd>
-          New detections are proven on production open-source projects &mdash; more than fifty
-          of them &mdash; with positive and negative controls in the same run, so a rule that
-          fires on nothing is treated as broken rather than clean. The live-traffic, cloud,
-          cluster and container checks are exercised against genuinely running systems: a real
-          cluster, a real cloud account, a real built image, never a mocked response.
-        </dd>
-      </div>
-      <div class="proof-item">
-        <dt>Limitations written down</dt>
-        <dd>
-          Known gaps are documented rather than hidden, and no result is described as validated
-          unless the validation was actually run.
-        </dd>
-      </div>
-    </dl>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">9</div><div class="stat-l">pull requests patching real CVEs in active open-source projects</div></div>
+      <div class="stat"><div class="stat-n ok">2</div><div class="stat-l">accepted by maintainers: one merged, one shipped by the maintainer within minutes</div></div>
+      <div class="stat"><div class="stat-n">50+</div><div class="stat-l">production open-source projects used to validate new detections</div></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">detection rules submitted to community rule sets, still in review</div></div>
+    </div>
+    <p class="caption">Known gaps are documented, and nothing is described as validated unless the validation was actually run.</p>
   </section>
 
-  <section>
+  <section id="faq">
     <div class="sec-head">
-      <div class="eyebrow">Pricing</div>
-      <h2>Priced per engagement, quoted up front</h2>
-      <p>
-        Every application is different, so we quote rather than publish a rate card. You get the
-        quote before any work starts, and the first assessment is free.
-      </p>
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions security teams ask first</h2>
     </div>
-    <div class="grid2">
-      <div class="cell">
-        <h3>What sets the price</h3>
-        <p>How many repositories and applications are in scope, whether live and logged-in testing is needed, and whether your product has AI features to test.</p>
-      </div>
-      <div class="cell">
-        <h3>What every engagement includes</h3>
-        <p>The report with evidence on every finding, the fixes we can prepare with their verification results, and a written note on anything we could not check.</p>
-      </div>
-    </div>
-    <div class="cta-row">
-      <a class="btn btn-ghost" href="mailto:security@verdictruntime.com?subject=Quote%20request&amp;body=Company%3A%0AWhat%20to%20assess%20(repositories%2C%20URLs%2C%20AI%20features)%3A%0ALive%20or%20logged-in%20testing%20needed%3F%3A%0ATimeline%3A%0A">Contact us for a quote</a>
+
+    <div class="faq">
+      <details>
+        <summary>Does my source code leave my network?</summary>
+        <p>Not if you self-host: the scanner runs in your environment and only results leave, if you choose to send them. With the hosted option, your code is deleted automatically within an hour of the scan, or immediately on request.</p>
+      </details>
+      <details>
+        <summary>What does &ldquo;confirmed&rdquo; actually mean?</summary>
+        <p>A hand-written, reviewed proof reproduced the issue against your running application, inside a sandbox whose network access is locked to your target. If it doesn't reproduce, it isn't called confirmed. It stays labelled with the evidence it does have.</p>
+      </details>
+      <details>
+        <summary>Do you test production?</summary>
+        <p>We test only what your written scope names, and we recommend a staging environment. Live traffic, logged-in testing and anything that writes data each need their own explicit authorisation.</p>
+      </details>
+      <details>
+        <summary>Do I have to use every step?</summary>
+        <p>No. Scan, verify, pentest, fix and defend are independent. Start with a scan, or bring your existing scanner's results and use us only for proof and fixes.</p>
+      </details>
+      <details>
+        <summary>Will you deploy defense rules or merge fixes for us?</summary>
+        <p>No. Fixes arrive as a reviewable diff or pull request, and defense artifacts are generated for your team to review and deploy, starting in observe mode.</p>
+      </details>
+      <details>
+        <summary>How is pricing set?</summary>
+        <p>Per engagement, quoted up front: by the number of repositories and applications in scope, whether live and logged-in testing is needed, and whether you have AI features to test. The first assessment is free.</p>
+      </details>
     </div>
   </section>
 
   <div class="cta">
-    <h2>The first assessment is on us</h2>
+    <h2>Get your first verdict free</h2>
     <p>
-      One repository, one report, no obligation. You will get the findings, the evidence behind
-      each one, the fixes we can prepare, and an honest note on what could not be checked.
+      One repository, one report, no obligation: the findings, the evidence behind each one, the
+      fixes we can prepare, and an honest note on what we couldn't check.
     </p>
     <div class="cta-row">
-      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request an assessment</a>
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
       <a class="btn btn-ghost" href="sample-report.html">See a sample report</a>
       <span class="btn-note">Reply within two business days.</span>
     </div>
     <div class="scoped">
-      <strong>We never scan first.</strong> Nothing is tested until you have named the target in
-      writing and confirmed you are authorised to have it tested. If you would rather start on
-      an open-source repository you maintain, that works too.
+      <strong>We never scan first.</strong> Nothing is tested until you've named the target in
+      writing and confirmed you're authorised to have it tested.
     </div>
   </div>
 
   <footer>
-    <div>Verdict Runtime &mdash; application and AI security assessment</div>
+    <div>Verdict Runtime &mdash; application and AI security</div>
     <div>Built by a small, independent security team with a background in offensive security and enterprise vulnerability management.</div>
     <div>Israel &middot; <a href="mailto:security@verdictruntime.com">security@verdictruntime.com</a></div>
-    <div><a href="https://verdictruntime.com">verdictruntime.com</a></div>
   </footer>
 
 </div>
