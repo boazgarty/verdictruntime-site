@@ -20,7 +20,8 @@ Caddy that fronts the app. `verdictruntime.com/product/` serves the files in
 `verdictruntime.com/product/*`, so there is one canonical URL. Caddy config:
 `/etc/caddy/Caddyfile` (recorded in `code-scanner-api/CLOUD.md`).
 
-To publish a change, from this directory:
+To publish a change, run `./deploy.sh` (packs the files below, extracts them on the VM,
+then checks the live `<title>` matches). Equivalent manual command, from this directory:
 
 ```bash
 tar cz index.html sample-report.html styles.css consent.js favicon.svg robots.txt sitemap.xml demo.mp4 demo-poster.jpg \
