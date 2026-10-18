@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 <script defer src="consent.js"></script>
 </head>
 <body>
@@ -29,6 +29,7 @@
   <div class="topnav-in">
     <a class="wordmark" href="#top"><span class="mark"></span>Verdict<span class="wordmark-2">Runtime</span></a>
     <div class="topnav-links">
+      <a href="#benchmark">Benchmark</a>
       <a href="#how">How it works</a>
       <a href="#coverage">Coverage</a>
       <a href="#defense">Defense</a>
@@ -90,6 +91,77 @@
         <h3>Protected before the fix ships</h3>
         <p>Optional WAF, gateway and detection rules generated from your findings, starting in observe mode.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="benchmark">
+    <div class="sec-head">
+      <div class="eyebrow">Benchmark &middot; 2026-10-18</div>
+      <h2>We out-scan Snyk and CodeQL. Then we keep going.</h2>
+      <p>
+        We ran Verdict Runtime head to head against Snyk Code and GitHub CodeQL, on seven
+        deliberately vulnerable applications across six languages. Each app was scored against its own
+        published answer key. Static scanning was only the first round.
+      </p>
+    </div>
+
+    <div class="stats stats-tight">
+      <div class="stat"><div class="stat-n ok">78</div><div class="stat-l">of 152 labelled flaws found by Verdict Runtime</div></div>
+      <div class="stat"><div class="stat-n">66</div><div class="stat-l">found by GitHub CodeQL</div></div>
+      <div class="stat"><div class="stat-n">65</div><div class="stat-l">found by Snyk Code</div></div>
+      <div class="stat"><div class="stat-n ok">5 of 6</div><div class="stat-l">languages where we found the most</div></div>
+    </div>
+
+    <h3 class="bench-sub">Round 1: code scanning, like for like</h3>
+    <div class="table-scroll">
+      <table class="bench-table">
+        <thead>
+          <tr><th>Benchmark app</th><th class="num">Labelled flaws</th><th class="num us-h">Verdict Runtime</th><th class="num">CodeQL</th><th class="num">Snyk Code</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Python (Django)</td><td class="num">29</td><td class="num us">24</td><td class="num">16</td><td class="num">16</td></tr>
+          <tr><td>Ruby on Rails</td><td class="num">17</td><td class="num us">10</td><td class="num">8</td><td class="num">7</td></tr>
+          <tr><td>JavaScript (Node app 1)</td><td class="num">17</td><td class="num us">10</td><td class="num">6</td><td class="num">8</td></tr>
+          <tr><td>JavaScript (Node app 2)</td><td class="num">9</td><td class="num us">6</td><td class="num">6</td><td class="num">3</td></tr>
+          <tr><td>Go</td><td class="num">4</td><td class="num us">4</td><td class="num">2</td><td class="num">2</td></tr>
+          <tr><td>C# / .NET</td><td class="num">36</td><td class="num us">5</td><td class="num">2</td><td class="num">4</td></tr>
+          <tr><td>Java</td><td class="num">40</td><td class="num">19</td><td class="num">26</td><td class="num">25</td></tr>
+          <tr class="total"><td>All seven</td><td class="num">152</td><td class="num us">78</td><td class="num">66</td><td class="num">65</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">
+      A flaw counts only when the right vulnerability class is reported within three lines of the labelled spot.
+      Java is the one language where both beat us, and we show it. Both tools ran at their documented security settings. Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.
+    </p>
+
+    <h3 class="bench-sub">Round 2: what Snyk Code and CodeQL don&rsquo;t do</h3>
+    <div class="table-scroll">
+      <table class="bench-table vs">
+        <thead>
+          <tr><th>Capability</th><th class="num us-h">Verdict Runtime</th><th class="num">Snyk Code &amp; CodeQL</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="what">Static code analysis</td><td class="num yes">Yes</td><td class="num yes">Yes</td></tr>
+          <tr><td class="what">Proof that a finding is exploitable in your running app</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">Logged-in pentesting: broken access control, token forgery, OWASP API Top 10</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">Live attacks on your AI features: OWASP LLM Top 10 and agentic risks</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">Business-logic testing: replayed checkouts, double-spent coupons</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">WAF, gateway and detection rules built from your own findings</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bench-live">
+      <strong>On the same benchmark, our live pentest agents proved 9 more vulnerabilities</strong> that Snyk Code and CodeQL
+      cannot report: one account reading another account's private data, a forged unsigned
+      login token accepted as valid, internal configuration and server logs open to anyone, and logins
+      with no brute-force protection. Every one was reproduced with a real request.
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="verdict-runtime-vs-snyk-codeql.pdf" download>Download the benchmark (PDF)</a>
+      <span class="btn-note">All seven benchmark apps are deliberately vulnerable training apps. Your code will differ, so start with a free assessment.</span>
     </div>
   </section>
 

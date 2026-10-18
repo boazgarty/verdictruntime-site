@@ -596,3 +596,21 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   :root:not([data-theme="light"]) .btn-ghost { background: transparent; color: var(--accent-deep); border-color: var(--line-strong); }
 }
 :root[data-theme="dark"] .btn-ghost { background: transparent; color: var(--accent-deep); border-color: var(--line-strong); }
+
+/* ---------- benchmark vs Snyk Code / CodeQL (2026-10-18) ---------- */
+.stats-tight { margin-top: 4px; }
+.bench-sub { font-size: 18px; font-weight: 700; letter-spacing: -.012em; margin: 34px 0 12px; }
+.bench-table td.num, .bench-table th.num { text-align: center; font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; }
+.bench-table td { font-size: 14px; }
+.bench-table td.us { color: var(--confirmed); font-weight: 600; }
+.bench-table th.us-h { color: var(--confirmed); }
+.bench-table tr.total td { background: var(--accent-wash); font-weight: 600; border-top: 1px solid var(--accent); }
+.bench-table.vs td.yes { color: var(--confirmed); font-weight: 600; }
+.bench-table.vs td.no { color: var(--text-faint); }
+.bench-live {
+  margin-top: 18px; background: var(--accent-wash); border: 1px solid var(--line);
+  border-left: 3px solid var(--confirmed); border-radius: 3px; padding: 16px 18px;
+  font-size: 14.6px; color: var(--text-muted); line-height: 1.6;
+}
+.bench-live strong { color: var(--text); }
+#benchmark .cta-row { margin-top: 20px; }
