@@ -3,7 +3,7 @@
 # verdictruntime.com/product/ from /var/www/verdict-marketing), then check it's live.
 set -euo pipefail
 cd "$(dirname "$0")"
-FILES=(index.html sample-report.html styles.css consent.js favicon.svg robots.txt sitemap.xml demo.mp4 demo-poster.jpg verdict-runtime-vs-snyk-codeql.pdf)
+FILES=(index.html sample-report.html styles.css consent.js favicon.svg robots.txt sitemap.xml demo.mp4 demo-poster.jpg verdict-runtime-vs-snyk-codeql.pdf verdict-runtime-workflow.mp4 verdict-runtime-workflow-poster.jpg)
 tar cz "${FILES[@]}" | gcloud compute ssh code-scanner --zone=us-central1-a \
   --command='sudo tar xz --no-same-owner -C /var/www/verdict-marketing'
 live_title=$(curl -s https://verdictruntime.com/product/ | grep -o '<title>[^<]*</title>' || true)

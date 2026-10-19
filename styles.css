@@ -693,3 +693,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   content: "\2713"; font-family: "IBM Plex Mono", monospace; font-weight: 600;
   color: var(--confirmed); line-height: 1.45;
 }
+
+/* ---------- integrations: workflow video ---------- */
+.wf-video { margin: 0 0 40px; }
+.wf-video .caption { text-align: center; }
