@@ -33,6 +33,7 @@
       <a href="#how">How it works</a>
       <a href="#coverage">Coverage</a>
       <a href="#defense">Defense</a>
+      <a href="#integrations">Integrations</a>
       <a href="#deploy">Deployment</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -338,6 +339,50 @@
       <strong>Observe before enforce.</strong> Every artifact ships in detect-only mode, so nothing is
       blocked until you're ready. And a coverage matrix names, honestly, what no rule can defend.
     </p>
+  </section>
+
+  <section id="integrations">
+    <div class="sec-head">
+      <div class="eyebrow">Integrations</div>
+      <h2>Built into how your team already ships</h2>
+      <p>
+        Security findings are cheapest to fix before they merge. Verdict Runtime runs where your
+        developers already work, from the editor to the pull request to production alerts.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <div class="cell">
+        <h3><span class="dot"></span>Every pull request</h3>
+        <p>Each PR is scanned automatically. The comment lists only the issues that PR introduced, and the merge can be blocked at the severity you choose.</p>
+        <div class="cell-note">GitHub &middot; GitLab coming soon</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>In the editor</h3>
+        <p>A VS Code extension flags vulnerable code and leaked secrets as developers save, before anything is committed.</p>
+        <div class="cell-note">VS Code &middot; available to early teams</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>GitHub code scanning</h3>
+        <p>Results land in the repository's Security tab in the standard SARIF format, next to the alerts your team already triages.</p>
+        <div class="cell-note">SARIF 2.1.0</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Your AI coding assistant</h3>
+        <p>Copy a ready-made fix prompt into your coding assistant. It describes the finding and the safe fix, without including your source code.</p>
+        <div class="cell-note">Tested with Claude Code</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>CI gates and scheduled scans</h3>
+        <p>Fail the build on new high-severity findings, and run nightly scans and scheduled live tests against the targets you approved.</p>
+        <div class="cell-note">Any CI &middot; Docker image &middot; GitHub Action</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Alerts where you work</h3>
+        <p>A Slack or pager alert when your WAF logs show someone attacking a weakness we already found, so you know it matters now.</p>
+        <div class="cell-note">Webhook &middot; Jira coming soon</div>
+      </div>
+    </div>
   </section>
 
   <section id="deploy">
