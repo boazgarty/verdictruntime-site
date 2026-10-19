@@ -614,3 +614,82 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 }
 .bench-live strong { color: var(--text); }
 #benchmark .cta-row { margin-top: 20px; }
+
+/* ---------- integrations: SDLC lane + PR comment (2026-10-19) ---------- */
+.lane { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: 1fr; position: relative; }
+.stage {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 3px;
+  padding: 16px 17px 18px; position: relative;
+}
+.stage-node {
+  width: 32px; height: 32px; border-radius: 50%; background: var(--surface);
+  border: 2px solid var(--accent); color: var(--accent); display: flex; align-items: center; justify-content: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 500; position: relative; z-index: 1;
+}
+.stage-label {
+  margin-top: 12px; font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+}
+.stage h3 { font-size: 15.5px; font-weight: 600; letter-spacing: -.008em; margin-top: 5px; }
+.stage p { margin: 7px 0 0; font-size: 13.4px; line-height: 1.55; color: var(--text-muted); }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tchip {
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; padding: 2px 8px;
+  border: 1px solid var(--line-strong); border-radius: 20px; color: var(--text-muted); background: var(--surface);
+  white-space: nowrap;
+}
+.tchip.soon { border-style: dashed; color: var(--text-faint); }
+@media (min-width: 900px) {
+  .lane { grid-template-columns: repeat(5, 1fr); gap: 0; }
+  .lane::before {
+    content: ""; position: absolute; left: 10%; right: 10%; top: 15px; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-deep)); opacity: .55;
+  }
+  .stage { background: transparent; border: none; padding: 0 12px; text-align: center; }
+  .stage-node { margin: 0 auto; }
+  .tchips { justify-content: center; }
+}
+
+.pr-split { margin-top: 44px; }
+.pr-comment { border-left-color: var(--sev-critical); }
+.prc-head {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 12px 18px; background: var(--surface-sunk); border-bottom: 1px solid var(--line);
+  font-size: 13px; color: var(--text-muted);
+}
+.prc-head strong { color: var(--text); font-weight: 600; }
+.prc-bot {
+  width: 22px; height: 22px; border-radius: 5px; background: var(--accent);
+  display: flex; align-items: center; justify-content: center; flex: none;
+}
+.prc-bot i { width: 8px; height: 8px; border-radius: 1.5px; background: var(--ground); display: block; }
+.prc-list { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; display: grid; gap: 11px; }
+.prc-row { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: start; }
+.prc-row .chip { text-align: center; }
+.prc-rule { font-size: 13.8px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.prc-loc { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--text-faint); margin-top: 2px; }
+.prc-foot {
+  margin-top: 14px; padding-top: 11px; border-top: 1px dashed var(--line);
+  font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--accent);
+}
+.pr-h { font-size: clamp(20px, 2.4vw, 24px); font-weight: 700; letter-spacing: -.018em; }
+.ladder-compact .rung-label { white-space: nowrap; }
+
+/* ---------- integrations: table-stakes checklist ---------- */
+.essentials {
+  margin-top: 44px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 3px; padding: 24px 24px 22px;
+}
+.essentials-lede { margin: 8px 0 0; color: var(--text-muted); font-size: 14.6px; }
+.checklist {
+  list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px 26px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+.checklist li {
+  display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start;
+  font-size: 14px; line-height: 1.45; color: var(--text);
+}
+.checklist li::before {
+  content: "\2713"; font-family: "IBM Plex Mono", monospace; font-weight: 600;
+  color: var(--confirmed); line-height: 1.45;
+}

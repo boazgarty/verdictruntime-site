@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 <script defer src="consent.js"></script>
 </head>
 <body>
@@ -344,44 +344,118 @@
   <section id="integrations">
     <div class="sec-head">
       <div class="eyebrow">Integrations</div>
-      <h2>Built into how your team already ships</h2>
+      <h2>From the first keystroke to production</h2>
       <p>
-        Security findings are cheapest to fix before they merge. Verdict Runtime runs where your
-        developers already work, from the editor to the pull request to production alerts.
+        Verdict Runtime plugs into the tools your developers already use. Issues are caught where they
+        are cheapest to fix, and watched after they ship.
       </p>
     </div>
 
-    <div class="grid3">
-      <div class="cell">
-        <h3><span class="dot"></span>Every pull request</h3>
-        <p>Each PR is scanned automatically. The comment lists only the issues that PR introduced, and the merge can be blocked at the severity you choose.</p>
-        <div class="cell-note">GitHub &middot; GitLab coming soon</div>
+    <ol class="lane">
+      <li class="stage">
+        <div class="stage-node">01</div>
+        <div class="stage-label">Code</div>
+        <h3>In the editor</h3>
+        <p>Vulnerable code and leaked secrets flagged on save, before the commit.</p>
+        <div class="tchips"><span class="tchip">VS Code</span><span class="tchip soon">Early access</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">02</div>
+        <div class="stage-label">Pull request</div>
+        <h3>On every PR</h3>
+        <p>One comment with only the new issues, and a merge gate at the severity you set.</p>
+        <div class="tchips"><span class="tchip">GitHub</span><span class="tchip soon">GitLab soon</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">03</div>
+        <div class="stage-label">CI pipeline</div>
+        <h3>In the build</h3>
+        <p>Fail the build on new high-severity findings. Results land in GitHub's Security tab.</p>
+        <div class="tchips"><span class="tchip">GitHub Actions</span><span class="tchip">Any CI</span><span class="tchip">Docker</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">04</div>
+        <div class="stage-label">Staging</div>
+        <h3>Against the running app</h3>
+        <p>Scheduled live tests and pentests, only on targets you approved in writing.</p>
+        <div class="tchips"><span class="tchip">Nightly</span><span class="tchip">Scoped</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">05</div>
+        <div class="stage-label">Production</div>
+        <h3>When it's attacked</h3>
+        <p>A Slack or pager alert when your WAF sees an attack on a weakness we found.</p>
+        <div class="tchips"><span class="tchip">Slack</span><span class="tchip">Webhook</span><span class="tchip soon">Jira soon</span></div>
+      </li>
+    </ol>
+
+    <div class="split pr-split">
+      <div>
+        <div class="specimen pr-comment">
+          <div class="prc-head">
+            <span class="prc-bot"><i></i></span>
+            <strong>verdict-runtime</strong><span>commented on pull request #418</span>
+            <span class="chip chip-crit push">Merge blocked</span>
+          </div>
+          <div class="specimen-body">
+            <div class="specimen-title">2 new findings in this pull request</div>
+            <div class="specimen-meta">Policy gate: 1 blocked &middot; 1 warned &middot; 0 allowed</div>
+            <div class="prc-list">
+              <div class="prc-row">
+                <span class="chip chip-sev">High</span>
+                <div><div class="prc-rule">SQL injection: request input reaches a raw query</div><div class="prc-loc">api/orders.py:88</div></div>
+              </div>
+              <div class="prc-row">
+                <span class="chip chip-med">Medium</span>
+                <div><div class="prc-rule">State-changing route without CSRF protection</div><div class="prc-loc">web/routes/settings.js:41</div></div>
+              </div>
+            </div>
+            <div class="prc-foot">Fix prompt ready for your AI coding assistant &middot; 37 existing findings elsewhere not repeated</div>
+          </div>
+        </div>
+        <p class="caption">Illustrative example of a pull-request comment.</p>
       </div>
-      <div class="cell">
-        <h3><span class="dot"></span>In the editor</h3>
-        <p>A VS Code extension flags vulnerable code and leaked secrets as developers save, before anything is committed.</p>
-        <div class="cell-note">VS Code &middot; available to early teams</div>
+
+      <div>
+        <h3 class="pr-h">Reviews developers actually read</h3>
+        <div class="ladder ladder-compact">
+          <div class="rung">
+            <div class="rung-label r3">NEW ONLY</div>
+            <div><h3>Only what this change introduced</h3><p>Existing debt never floods the review, and moved lines aren't reported again.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r3">NO SILENT PASS</div>
+            <div><h3>A failed scan is never green</h3><p>If an engine crashes, the check says inconclusive instead of passing.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r3">FORK-SAFE</div>
+            <div><h3>Safe on outside contributions</h3><p>Pull requests from forks run with a read-only token.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r3">AI FIX</div>
+            <div><h3>Fix it with your coding assistant</h3><p>One click copies a fix prompt for tools like Claude Code, without sending your source code.</p></div>
+          </div>
+        </div>
       </div>
-      <div class="cell">
-        <h3><span class="dot"></span>GitHub code scanning</h3>
-        <p>Results land in the repository's Security tab in the standard SARIF format, next to the alerts your team already triages.</p>
-        <div class="cell-note">SARIF 2.1.0</div>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>Your AI coding assistant</h3>
-        <p>Copy a ready-made fix prompt into your coding assistant. It describes the finding and the safe fix, without including your source code.</p>
-        <div class="cell-note">Tested with Claude Code</div>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>CI gates and scheduled scans</h3>
-        <p>Fail the build on new high-severity findings, and run nightly scans and scheduled live tests against the targets you approved.</p>
-        <div class="cell-note">Any CI &middot; Docker image &middot; GitHub Action</div>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>Alerts where you work</h3>
-        <p>A Slack or pager alert when your WAF logs show someone attacking a weakness we already found, so you know it matters now.</p>
-        <div class="cell-note">Webhook &middot; Jira coming soon</div>
-      </div>
+    </div>
+
+    <div class="essentials">
+      <h3 class="pr-h">Everything you'd expect from a code scanner, built in</h3>
+      <p class="essentials-lede">The features teams compare scanners on are all included, before the live testing even starts.</p>
+      <ul class="checklist">
+        <li>Automatic fix pull requests for vulnerable dependencies</li>
+        <li>Container image scanning, with base-image upgrade fixes</li>
+        <li>Infrastructure as code: Terraform, Kubernetes, Dockerfiles</li>
+        <li>Secrets detection, with an optional check if a key is still live</li>
+        <li>Open-source license compliance</li>
+        <li>Signed SBOM, with VEX exploitability statements</li>
+        <li>Priority by real-world exploitation: EPSS and CISA KEV</li>
+        <li>CI/CD workflow security for GitHub Actions</li>
+        <li>Cloud and Kubernetes posture checks</li>
+        <li>Ignore rules, baselines and severity gates</li>
+        <li>Custom rules for your own code patterns</li>
+        <li>Upgrade notes: breaking changes before you bump a package</li>
+      </ul>
     </div>
   </section>
 
