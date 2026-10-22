@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Defense and Virtual Patching - Verdict Runtime</title>
+<meta name="description" content="Stay protected while the fix is in review: WAF virtual patches, API gateway rules, detection rules and guardrails generated from verified findings.">
+<link rel="canonical" href="https://verdictruntime.com/defense/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Verdict Runtime">
+<meta property="og:title" content="Defense and Virtual Patching - Verdict Runtime">
+<meta property="og:description" content="Stay protected while the fix is in review: WAF virtual patches, API gateway rules, detection rules and guardrails generated from verified findings.">
+<meta property="og:url" content="https://verdictruntime.com/defense/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css?v=9">
+<script defer src="/consent.js"></script>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Main">
+  <div class="topnav-in">
+    <a class="wordmark" href="/"><span class="mark"></span><span>Verdict<span class="wordmark-2">Runtime</span></span></a>
+    <div class="topnav-links">
+      <a href="/benchmark/">Benchmark</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/coverage/">Coverage</a>
+      <a href="/defense/">Defense</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/deployment/">Deployment</a>
+      <a href="/faq/">FAQ</a>
+    </div>
+    <div class="topnav-actions">
+      <a class="topnav-login" href="https://app.verdictruntime.com/">Log in</a>
+      <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="hero hero-page">
+    <h1>Defense and virtual patching</h1>
+    <p class="lede">Stay protected while the fix is in review: WAF virtual patches, API gateway rules, detection rules and guardrails generated from verified findings.</p>
+  </div>
+
+  <section id="defense">
+    <div class="sec-head">
+      <div class="eyebrow">Defense layer &middot; optional</div>
+      <h2>Protected today, while the fix is in review</h2>
+      <p>
+        Code fixes take a sprint. The defense layer turns findings into protection you can review
+        and deploy now. We generate the artifacts; you decide what goes live.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <div class="cell"><h3><span class="dot"></span>WAF rules</h3><p>Virtual patches for AWS WAF, Cloudflare and Google Cloud Armor, written only for exploits we confirmed.</p></div>
+      <div class="cell"><h3><span class="dot"></span>API gateway policies</h3><p>Gateway policies from what the pentest found, with an honest note where a gateway can't enforce the fix.</p></div>
+      <div class="cell"><h3><span class="dot"></span>Kubernetes admission</h3><p>Admission policies that can block the misconfigurations your scan found.</p></div>
+      <div class="cell"><h3><span class="dot"></span>Runtime detection</h3><p>Detection rules that alert when someone attacks the exact weakness you have.</p></div>
+      <div class="cell"><h3><span class="dot"></span>Secret rotation</h3><p>Step-by-step runbooks for every leaked credential, per provider.</p></div>
+      <div class="cell"><h3><span class="dot"></span>LLM guardrails</h3><p>Guardrail configurations against the prompt attacks that actually worked on your app.</p></div>
+    </div>
+    <p class="flow-note">
+      <strong>Observe before enforce.</strong> Every artifact ships in detect-only mode, so nothing is
+      blocked until you're ready. And a coverage matrix names, honestly, what no rule can defend.
+    </p>
+  </section>
+
+  <div class="cta">
+    <h2>Get your first verdict free</h2>
+    <p>
+      One repository, one report, no obligation: the findings, the evidence behind each one, the
+      fixes we can prepare, and an honest note on what we couldn't check.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
+      <a class="btn btn-ghost" href="/sample-report.html">See a sample report</a>
+      <span class="btn-note">Reply within two business days.</span>
+    </div>
+    <div class="scoped">
+      <strong>We never scan first.</strong> Nothing is tested until you've named the target in
+      writing and confirmed you're authorised to have it tested.
+    </div>
+  </div>
+
+
+  <footer>
+    <div>Verdict Runtime &mdash; application and AI security</div>
+    <div>Built by a small, independent security team with a background in offensive security and enterprise vulnerability management.</div>
+    <div>Israel &middot; <a href="mailto:security@verdictruntime.com">security@verdictruntime.com</a></div>
+    <div class="footer-links"><a href="/how-it-works/">How it works</a> &middot; <a href="/benchmark/">Benchmark</a> &middot; <a href="/coverage/">Coverage</a> &middot; <a href="/defense/">Defense</a> &middot; <a href="/integrations/">Integrations</a> &middot; <a href="/deployment/">Deployment</a> &middot; <a href="/security/">Security</a> &middot; <a href="/faq/">FAQ</a> &middot; <a href="/sample-report.html">Sample report</a></div>
+  </footer>
+
+</div>
+
+<div id="consent-banner" class="consent" hidden role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <p>
+    This page uses Google Analytics to see which pages get read and where visitors come
+    from. It only runs if you say yes, and nothing loads before that.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn consent-btn-ghost">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn consent-btn-solid">Accept</button>
+  </div>
+</div>
+
+</body>
+</html>

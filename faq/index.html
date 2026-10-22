@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ - Verdict Runtime</title>
+<meta name="description" content="Answers to the questions security teams ask first about Verdict Runtime: data handling, production testing, false positives, pricing and more.">
+<link rel="canonical" href="https://verdictruntime.com/faq/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Verdict Runtime">
+<meta property="og:title" content="FAQ - Verdict Runtime">
+<meta property="og:description" content="Answers to the questions security teams ask first about Verdict Runtime: data handling, production testing, false positives, pricing and more.">
+<meta property="og:url" content="https://verdictruntime.com/faq/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css?v=9">
+<script defer src="/consent.js"></script>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Main">
+  <div class="topnav-in">
+    <a class="wordmark" href="/"><span class="mark"></span><span>Verdict<span class="wordmark-2">Runtime</span></span></a>
+    <div class="topnav-links">
+      <a href="/benchmark/">Benchmark</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/coverage/">Coverage</a>
+      <a href="/defense/">Defense</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/deployment/">Deployment</a>
+      <a href="/faq/">FAQ</a>
+    </div>
+    <div class="topnav-actions">
+      <a class="topnav-login" href="https://app.verdictruntime.com/">Log in</a>
+      <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="hero hero-page">
+    <h1>Frequently asked questions</h1>
+    <p class="lede">Answers to the questions security teams ask first about Verdict Runtime: data handling, production testing, false positives, pricing and more.</p>
+  </div>
+
+  <section id="faq">
+    <div class="sec-head">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions security teams ask first</h2>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>Does my source code leave my network?</summary>
+        <p>Not if you self-host: the scanner runs in your environment and only results leave, if you choose to send them. With the hosted option, your code is deleted automatically within an hour of the scan, or immediately on request.</p>
+      </details>
+      <details>
+        <summary>What does &ldquo;confirmed&rdquo; actually mean?</summary>
+        <p>A hand-written, reviewed proof reproduced the issue against your running application, inside a sandbox whose network access is locked to your target. If it doesn't reproduce, it isn't called confirmed. It stays labelled with the evidence it does have.</p>
+      </details>
+      <details>
+        <summary>Do you test production?</summary>
+        <p>We test only what your written scope names, and we recommend a staging environment. Live traffic, logged-in testing and anything that writes data each need their own explicit authorisation.</p>
+      </details>
+      <details>
+        <summary>Do I have to use every step?</summary>
+        <p>No. Scan, verify, pentest, fix and defend are independent. Start with a scan, or bring your existing scanner's results and use us only for proof and fixes.</p>
+      </details>
+      <details>
+        <summary>Will you deploy defense rules or merge fixes for us?</summary>
+        <p>No. Fixes arrive as a reviewable diff or pull request, and defense artifacts are generated for your team to review and deploy, starting in observe mode.</p>
+      </details>
+      <details>
+        <summary>How is pricing set?</summary>
+        <p>Per engagement, quoted up front: by the number of repositories and applications in scope, whether live and logged-in testing is needed, and whether you have AI features to test. The first assessment is free.</p>
+      </details>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Get your first verdict free</h2>
+    <p>
+      One repository, one report, no obligation: the findings, the evidence behind each one, the
+      fixes we can prepare, and an honest note on what we couldn't check.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
+      <a class="btn btn-ghost" href="/sample-report.html">See a sample report</a>
+      <span class="btn-note">Reply within two business days.</span>
+    </div>
+    <div class="scoped">
+      <strong>We never scan first.</strong> Nothing is tested until you've named the target in
+      writing and confirmed you're authorised to have it tested.
+    </div>
+  </div>
+
+
+  <footer>
+    <div>Verdict Runtime &mdash; application and AI security</div>
+    <div>Built by a small, independent security team with a background in offensive security and enterprise vulnerability management.</div>
+    <div>Israel &middot; <a href="mailto:security@verdictruntime.com">security@verdictruntime.com</a></div>
+    <div class="footer-links"><a href="/how-it-works/">How it works</a> &middot; <a href="/benchmark/">Benchmark</a> &middot; <a href="/coverage/">Coverage</a> &middot; <a href="/defense/">Defense</a> &middot; <a href="/integrations/">Integrations</a> &middot; <a href="/deployment/">Deployment</a> &middot; <a href="/security/">Security</a> &middot; <a href="/faq/">FAQ</a> &middot; <a href="/sample-report.html">Sample report</a></div>
+  </footer>
+
+</div>
+
+<div id="consent-banner" class="consent" hidden role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <p>
+    This page uses Google Analytics to see which pages get read and where visitors come
+    from. It only runs if you say yes, and nothing loads before that.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn consent-btn-ghost">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn consent-btn-solid">Accept</button>
+  </div>
+</div>
+
+</body>
+</html>

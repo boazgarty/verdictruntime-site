@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coverage - OWASP Web, API and LLM Top 10 - Verdict Runtime</title>
+<meta name="description" content="What Verdict Runtime covers: code, dependencies, IaC, secrets, containers, cloud and Kubernetes posture, and live testing across the OWASP Web, API and LLM Top 10.">
+<link rel="canonical" href="https://verdictruntime.com/coverage/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Verdict Runtime">
+<meta property="og:title" content="Coverage - OWASP Web, API and LLM Top 10 - Verdict Runtime">
+<meta property="og:description" content="What Verdict Runtime covers: code, dependencies, IaC, secrets, containers, cloud and Kubernetes posture, and live testing across the OWASP Web, API and LLM Top 10.">
+<meta property="og:url" content="https://verdictruntime.com/coverage/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css?v=9">
+<script defer src="/consent.js"></script>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Main">
+  <div class="topnav-in">
+    <a class="wordmark" href="/"><span class="mark"></span><span>Verdict<span class="wordmark-2">Runtime</span></span></a>
+    <div class="topnav-links">
+      <a href="/benchmark/">Benchmark</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/coverage/">Coverage</a>
+      <a href="/defense/">Defense</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/deployment/">Deployment</a>
+      <a href="/faq/">FAQ</a>
+    </div>
+    <div class="topnav-actions">
+      <a class="topnav-login" href="https://app.verdictruntime.com/">Log in</a>
+      <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="hero hero-page">
+    <h1>What Verdict Runtime covers</h1>
+    <p class="lede">What Verdict Runtime covers: code, dependencies, IaC, secrets, containers, cloud and Kubernetes posture, and live testing across the OWASP Web, API and LLM Top 10.</p>
+  </div>
+
+  <section id="coverage">
+    <div class="sec-head">
+      <div class="eyebrow">Coverage</div>
+      <h2>One report across your whole stack</h2>
+      <p>Every engine lands in one schema, deduplicated and correlated, so you read one report, not six.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="cell">
+        <h3><span class="dot"></span>Dependencies &amp; supply chain</h3>
+        <p>Vulnerable packages, whether they're reachable from your entry points, and a signed SBOM.</p>
+        <div class="cell-note">Reachability &middot; SBOM &middot; signing &middot; VEX</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Source code</h3>
+        <p>Injection, auth, access-control and crypto defects, cross-checked by two engines.</p>
+        <div class="cell-note">~20 in-house rules for gaps the market misses</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Secrets, cloud &amp; pipelines</h3>
+        <p>Committed credentials, cloud and Kubernetes misconfiguration, hijackable CI workflows.</p>
+        <div class="cell-note">Cloud posture &middot; container images &middot; CI</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Running application</h3>
+        <p>Authenticated testing, including broken authorization that only shows when two real accounts are compared.</p>
+        <div class="cell-note">20 targeted checks &middot; OWASP API1&ndash;10 &middot; A01&ndash;A10</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>AI &amp; LLM features</h3>
+        <p>Live adversarial testing of your model-backed features, judged against planted canaries and markers, not a model's opinion.</p>
+        <div class="cell-note">21 checks &middot; LLM01&ndash;LLM10 &middot; agentic</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Business logic</h3>
+        <p>An agent that learns your app's real API traffic, then tests rules like double-redeemed coupons and replayed checkouts.</p>
+        <div class="cell-note">Uncertain results are labelled for review</div>
+      </div>
+    </div>
+
+    <details class="more">
+      <summary>See the AI &amp; LLM checks and what each one proves</summary>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>OWASP</th><th>Check</th><th>What a finding proves</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="id">LLM01</td><td class="what">Prompt injection</td><td class="proves">A crafted instruction overrode the system prompt and returned an exact attacker-chosen marker.</td></tr>
+            <tr><td class="id">LLM01</td><td class="what">Indirect prompt injection</td><td class="proves">An instruction planted in fetched content &mdash; not in the user's message &mdash; was followed.</td></tr>
+            <tr><td class="id">LLM01</td><td class="what">Multi-turn escalation</td><td class="proves">Defences that hold on a single message fail across a real multi-turn conversation.</td></tr>
+            <tr><td class="id">LLM02</td><td class="what">Sensitive information disclosure</td><td class="proves">A canary secret planted in your own data came back in a model response.</td></tr>
+            <tr><td class="id">LLM03</td><td class="what">Plugin and tool enumeration</td><td class="proves">The model disclosed the real integrations it can reach when asked to list them.</td></tr>
+            <tr><td class="id">LLM04</td><td class="what">Persistent data poisoning</td><td class="proves">Content written by one account changed what a different account was told, on a fresh session.</td></tr>
+            <tr><td class="id">LLM05</td><td class="what">Improper output handling</td><td class="proves">Model output reached the page or a downstream system without escaping.</td></tr>
+            <tr><td class="id">LLM06</td><td class="what">Excessive agency</td><td class="proves">The model invoked a sensitive tool outside the user's stated intent.</td></tr>
+            <tr><td class="id">LLM07</td><td class="what">System prompt leakage</td><td class="proves">A known verbatim fragment of your own system prompt was recovered.</td></tr>
+            <tr><td class="id">LLM08</td><td class="what">Cross-tenant retrieval leakage</td><td class="proves">Retrieval crossed a tenant boundary and returned another tenant's canary.</td></tr>
+            <tr><td class="id">LLM08</td><td class="what">Knowledge-base poisoning</td><td class="proves">A document submitted through your own product changed later answers after sync.</td></tr>
+            <tr><td class="id">LLM09</td><td class="what">Hallucination under pressure</td><td class="proves">The model produced confident technical detail about an entity that does not exist.</td></tr>
+            <tr><td class="id">LLM10</td><td class="what">Unbounded consumption</td><td class="proves">Oversized input and long conversations were accepted with no effective cap.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Agent code execution</td><td class="proves">The agent ran an attacker-supplied command through its own execution tool.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Tool parameter injection</td><td class="proves">An authorised tool was re-invoked with an out-of-scope parameter value.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Agent-to-agent trust</td><td class="proves">A message claiming another agent's identity was accepted without verification.</td></tr>
+            <tr><td class="id">Agentic</td><td class="what">Identity and guardrail erosion</td><td class="proves">Sustained reframing across turns moved the model off its assigned identity and limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Seventeen of twenty-one checks shown. Every one requires your written authorisation before it sends a single request.</p>
+    </details>
+  </section>
+
+  <div class="cta">
+    <h2>Get your first verdict free</h2>
+    <p>
+      One repository, one report, no obligation: the findings, the evidence behind each one, the
+      fixes we can prepare, and an honest note on what we couldn't check.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
+      <a class="btn btn-ghost" href="/sample-report.html">See a sample report</a>
+      <span class="btn-note">Reply within two business days.</span>
+    </div>
+    <div class="scoped">
+      <strong>We never scan first.</strong> Nothing is tested until you've named the target in
+      writing and confirmed you're authorised to have it tested.
+    </div>
+  </div>
+
+
+  <footer>
+    <div>Verdict Runtime &mdash; application and AI security</div>
+    <div>Built by a small, independent security team with a background in offensive security and enterprise vulnerability management.</div>
+    <div>Israel &middot; <a href="mailto:security@verdictruntime.com">security@verdictruntime.com</a></div>
+    <div class="footer-links"><a href="/how-it-works/">How it works</a> &middot; <a href="/benchmark/">Benchmark</a> &middot; <a href="/coverage/">Coverage</a> &middot; <a href="/defense/">Defense</a> &middot; <a href="/integrations/">Integrations</a> &middot; <a href="/deployment/">Deployment</a> &middot; <a href="/security/">Security</a> &middot; <a href="/faq/">FAQ</a> &middot; <a href="/sample-report.html">Sample report</a></div>
+  </footer>
+
+</div>
+
+<div id="consent-banner" class="consent" hidden role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <p>
+    This page uses Google Analytics to see which pages get read and where visitors come
+    from. It only runs if you say yes, and nothing loads before that.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn consent-btn-ghost">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn consent-btn-solid">Accept</button>
+  </div>
+</div>
+
+</body>
+</html>

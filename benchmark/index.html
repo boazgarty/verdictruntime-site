@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchmark vs Snyk and CodeQL - Verdict Runtime</title>
+<meta name="description" content="How Verdict Runtime compares with Snyk and CodeQL on real, labelled vulnerable applications: dependency findings, code findings and severity agreement.">
+<link rel="canonical" href="https://verdictruntime.com/benchmark/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Verdict Runtime">
+<meta property="og:title" content="Benchmark vs Snyk and CodeQL - Verdict Runtime">
+<meta property="og:description" content="How Verdict Runtime compares with Snyk and CodeQL on real, labelled vulnerable applications: dependency findings, code findings and severity agreement.">
+<meta property="og:url" content="https://verdictruntime.com/benchmark/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css?v=9">
+<script defer src="/consent.js"></script>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Main">
+  <div class="topnav-in">
+    <a class="wordmark" href="/"><span class="mark"></span><span>Verdict<span class="wordmark-2">Runtime</span></span></a>
+    <div class="topnav-links">
+      <a href="/benchmark/">Benchmark</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/coverage/">Coverage</a>
+      <a href="/defense/">Defense</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/deployment/">Deployment</a>
+      <a href="/faq/">FAQ</a>
+    </div>
+    <div class="topnav-actions">
+      <a class="topnav-login" href="https://app.verdictruntime.com/">Log in</a>
+      <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="hero hero-page">
+    <h1>Verdict Runtime vs Snyk and CodeQL</h1>
+    <p class="lede">How Verdict Runtime compares with Snyk and CodeQL on real, labelled vulnerable applications: dependency findings, code findings and severity agreement.</p>
+  </div>
+
+  <section id="benchmark">
+    <div class="sec-head">
+      <div class="eyebrow">Benchmark &middot; 2026-10-18</div>
+      <h2>We out-scan Snyk and CodeQL. Then we keep going.</h2>
+      <p>
+        We ran Verdict Runtime head to head against Snyk Code and GitHub CodeQL, on seven
+        deliberately vulnerable applications across six languages. Each app was scored against its own
+        published answer key. Static scanning was only the first round.
+      </p>
+    </div>
+
+    <div class="stats stats-tight">
+      <div class="stat"><div class="stat-n ok">78</div><div class="stat-l">of 152 labelled flaws found by Verdict Runtime</div></div>
+      <div class="stat"><div class="stat-n">66</div><div class="stat-l">found by GitHub CodeQL</div></div>
+      <div class="stat"><div class="stat-n">65</div><div class="stat-l">found by Snyk Code</div></div>
+      <div class="stat"><div class="stat-n ok">5 of 6</div><div class="stat-l">languages where we found the most</div></div>
+    </div>
+
+    <h3 class="bench-sub">Round 1: code scanning, like for like</h3>
+    <div class="table-scroll">
+      <table class="bench-table">
+        <thead>
+          <tr><th>Benchmark app</th><th class="num">Labelled flaws</th><th class="num us-h">Verdict Runtime</th><th class="num">CodeQL</th><th class="num">Snyk Code</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Python (Django)</td><td class="num">29</td><td class="num us">24</td><td class="num">16</td><td class="num">16</td></tr>
+          <tr><td>Ruby on Rails</td><td class="num">17</td><td class="num us">10</td><td class="num">8</td><td class="num">7</td></tr>
+          <tr><td>JavaScript (Node app 1)</td><td class="num">17</td><td class="num us">10</td><td class="num">6</td><td class="num">8</td></tr>
+          <tr><td>JavaScript (Node app 2)</td><td class="num">9</td><td class="num us">6</td><td class="num">6</td><td class="num">3</td></tr>
+          <tr><td>Go</td><td class="num">4</td><td class="num us">4</td><td class="num">2</td><td class="num">2</td></tr>
+          <tr><td>C# / .NET</td><td class="num">36</td><td class="num us">5</td><td class="num">2</td><td class="num">4</td></tr>
+          <tr><td>Java</td><td class="num">40</td><td class="num">19</td><td class="num">26</td><td class="num">25</td></tr>
+          <tr class="total"><td>All seven</td><td class="num">152</td><td class="num us">78</td><td class="num">66</td><td class="num">65</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">
+      A flaw counts only when the right vulnerability class is reported within three lines of the labelled spot.
+      Java is the one language where both beat us, and we show it. Both tools ran at their documented security settings. Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.
+    </p>
+
+    <h3 class="bench-sub">Round 2: what Snyk Code and CodeQL don&rsquo;t do</h3>
+    <div class="table-scroll">
+      <table class="bench-table vs">
+        <thead>
+          <tr><th>Capability</th><th class="num us-h">Verdict Runtime</th><th class="num">Snyk Code &amp; CodeQL</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="what">Static code analysis</td><td class="num yes">Yes</td><td class="num yes">Yes</td></tr>
+          <tr><td class="what">Proof that a finding is exploitable in your running app</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">Logged-in pentesting: broken access control, token forgery, OWASP API Top 10</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">Live attacks on your AI features: OWASP LLM Top 10 and agentic risks</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">Business-logic testing: replayed checkouts, double-spent coupons</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+          <tr><td class="what">WAF, gateway and detection rules built from your own findings</td><td class="num yes">Yes</td><td class="num no">No</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bench-live">
+      <strong>On the same benchmark, our live pentest agents proved 9 more vulnerabilities</strong> that Snyk Code and CodeQL
+      cannot report: one account reading another account's private data, a forged unsigned
+      login token accepted as valid, internal configuration and server logs open to anyone, and logins
+      with no brute-force protection. Every one was reproduced with a real request.
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="/verdict-runtime-vs-snyk-codeql.pdf" download>Download the benchmark (PDF)</a>
+      <span class="btn-note">All seven benchmark apps are deliberately vulnerable training apps. Your code will differ, so start with a free assessment.</span>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Get your first verdict free</h2>
+    <p>
+      One repository, one report, no obligation: the findings, the evidence behind each one, the
+      fixes we can prepare, and an honest note on what we couldn't check.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
+      <a class="btn btn-ghost" href="/sample-report.html">See a sample report</a>
+      <span class="btn-note">Reply within two business days.</span>
+    </div>
+    <div class="scoped">
+      <strong>We never scan first.</strong> Nothing is tested until you've named the target in
+      writing and confirmed you're authorised to have it tested.
+    </div>
+  </div>
+
+
+  <footer>
+    <div>Verdict Runtime &mdash; application and AI security</div>
+    <div>Built by a small, independent security team with a background in offensive security and enterprise vulnerability management.</div>
+    <div>Israel &middot; <a href="mailto:security@verdictruntime.com">security@verdictruntime.com</a></div>
+    <div class="footer-links"><a href="/how-it-works/">How it works</a> &middot; <a href="/benchmark/">Benchmark</a> &middot; <a href="/coverage/">Coverage</a> &middot; <a href="/defense/">Defense</a> &middot; <a href="/integrations/">Integrations</a> &middot; <a href="/deployment/">Deployment</a> &middot; <a href="/security/">Security</a> &middot; <a href="/faq/">FAQ</a> &middot; <a href="/sample-report.html">Sample report</a></div>
+  </footer>
+
+</div>
+
+<div id="consent-banner" class="consent" hidden role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <p>
+    This page uses Google Analytics to see which pages get read and where visitors come
+    from. It only runs if you say yes, and nothing loads before that.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn consent-btn-ghost">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn consent-btn-solid">Accept</button>
+  </div>
+</div>
+
+</body>
+</html>

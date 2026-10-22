@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integrations - Verdict Runtime</title>
+<meta name="description" content="Verdict Runtime from the IDE to production: pull request checks, CI, ticketing, SIEM and WAF integrations.">
+<link rel="canonical" href="https://verdictruntime.com/integrations/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Verdict Runtime">
+<meta property="og:title" content="Integrations - Verdict Runtime">
+<meta property="og:description" content="Verdict Runtime from the IDE to production: pull request checks, CI, ticketing, SIEM and WAF integrations.">
+<meta property="og:url" content="https://verdictruntime.com/integrations/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css?v=9">
+<script defer src="/consent.js"></script>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Main">
+  <div class="topnav-in">
+    <a class="wordmark" href="/"><span class="mark"></span><span>Verdict<span class="wordmark-2">Runtime</span></span></a>
+    <div class="topnav-links">
+      <a href="/benchmark/">Benchmark</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/coverage/">Coverage</a>
+      <a href="/defense/">Defense</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/deployment/">Deployment</a>
+      <a href="/faq/">FAQ</a>
+    </div>
+    <div class="topnav-actions">
+      <a class="topnav-login" href="https://app.verdictruntime.com/">Log in</a>
+      <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="hero hero-page">
+    <h1>Verdict Runtime integrations</h1>
+    <p class="lede">Verdict Runtime from the IDE to production: pull request checks, CI, ticketing, SIEM and WAF integrations.</p>
+  </div>
+
+  <section id="integrations">
+    <div class="sec-head">
+      <div class="eyebrow">Integrations</div>
+      <h2>From the first keystroke to production</h2>
+      <p>
+        Verdict Runtime plugs into the tools your developers already use. Issues are caught where they
+        are cheapest to fix, and watched after they ship.
+      </p>
+    </div>
+
+    <div class="wf-video">
+      <video class="demo" controls muted playsinline preload="none" poster="/verdict-runtime-workflow-poster.jpg">
+        <source src="/verdict-runtime-workflow.mp4?v=2" type="video/mp4">
+        Your browser cannot play this video. <a href="/verdict-runtime-workflow.mp4?v=2">Download it</a> instead.
+      </video>
+      <p class="caption">
+        38 seconds, no sound: one pull request on a demo app, from the editor to a safe merge. The findings, PR comment,
+        fix prompt, AI assistant reply and diff are real tool output; the editor and GitHub screens are re-created.
+      </p>
+    </div>
+
+    <ol class="lane">
+      <li class="stage">
+        <div class="stage-node">01</div>
+        <div class="stage-label">Code</div>
+        <h3>In the editor</h3>
+        <p>Vulnerable code and leaked secrets flagged on save, before the commit.</p>
+        <div class="tchips"><span class="tchip">VS Code</span><span class="tchip soon">Early access</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">02</div>
+        <div class="stage-label">Pull request</div>
+        <h3>On every PR</h3>
+        <p>One comment with only the new issues, and a merge gate at the severity you set.</p>
+        <div class="tchips"><span class="tchip">GitHub</span><span class="tchip soon">GitLab soon</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">03</div>
+        <div class="stage-label">CI pipeline</div>
+        <h3>In the build</h3>
+        <p>Fail the build on new high-severity findings. Results land in GitHub's Security tab.</p>
+        <div class="tchips"><span class="tchip">GitHub Actions</span><span class="tchip">Any CI</span><span class="tchip">Docker</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">04</div>
+        <div class="stage-label">Staging</div>
+        <h3>Against the running app</h3>
+        <p>Scheduled live tests and pentests, only on targets you approved in writing.</p>
+        <div class="tchips"><span class="tchip">Nightly</span><span class="tchip">Scoped</span></div>
+      </li>
+      <li class="stage">
+        <div class="stage-node">05</div>
+        <div class="stage-label">Production</div>
+        <h3>When it's attacked</h3>
+        <p>A Slack or pager alert when your WAF sees an attack on a weakness we found.</p>
+        <div class="tchips"><span class="tchip">Slack</span><span class="tchip">Webhook</span><span class="tchip soon">Jira soon</span></div>
+      </li>
+    </ol>
+
+    <div class="split pr-split">
+      <div>
+        <div class="specimen pr-comment">
+          <div class="prc-head">
+            <span class="prc-bot"><i></i></span>
+            <strong>verdict-runtime</strong><span>commented on pull request #418</span>
+            <span class="chip chip-crit push">Merge blocked</span>
+          </div>
+          <div class="specimen-body">
+            <div class="specimen-title">2 new findings in this pull request</div>
+            <div class="specimen-meta">Policy gate: 1 blocked &middot; 1 warned &middot; 0 allowed</div>
+            <div class="prc-list">
+              <div class="prc-row">
+                <span class="chip chip-sev">High</span>
+                <div><div class="prc-rule">SQL injection: request input reaches a raw query</div><div class="prc-loc">api/orders.py:88</div></div>
+              </div>
+              <div class="prc-row">
+                <span class="chip chip-med">Medium</span>
+                <div><div class="prc-rule">State-changing route without CSRF protection</div><div class="prc-loc">web/routes/settings.js:41</div></div>
+              </div>
+            </div>
+            <div class="prc-foot">Fix prompt ready for your AI coding assistant &middot; 37 existing findings elsewhere not repeated</div>
+          </div>
+        </div>
+        <p class="caption">Illustrative example of a pull-request comment.</p>
+      </div>
+
+      <div>
+        <h3 class="pr-h">Reviews developers actually read</h3>
+        <div class="ladder ladder-compact">
+          <div class="rung">
+            <div class="rung-label r3">NEW ONLY</div>
+            <div><h3>Only what this change introduced</h3><p>Existing debt never floods the review, and moved lines aren't reported again.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r3">NO SILENT PASS</div>
+            <div><h3>A failed scan is never green</h3><p>If an engine crashes, the check says inconclusive instead of passing.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r3">FORK-SAFE</div>
+            <div><h3>Safe on outside contributions</h3><p>Pull requests from forks run with a read-only token.</p></div>
+          </div>
+          <div class="rung">
+            <div class="rung-label r3">AI FIX</div>
+            <div><h3>Fix it with your coding assistant</h3><p>One click copies a fix prompt for tools like Claude Code, without sending your source code.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="essentials">
+      <h3 class="pr-h">Everything you'd expect from a code scanner, built in</h3>
+      <p class="essentials-lede">The features teams compare scanners on are all included, before the live testing even starts.</p>
+      <ul class="checklist">
+        <li>Automatic fix pull requests for vulnerable dependencies</li>
+        <li>Container image scanning, with base-image upgrade fixes</li>
+        <li>Infrastructure as code: Terraform, Kubernetes, Dockerfiles</li>
+        <li>Secrets detection, with an optional check if a key is still live</li>
+        <li>Open-source license compliance</li>
+        <li>Signed SBOM, with VEX exploitability statements</li>
+        <li>Priority by real-world exploitation: EPSS and CISA KEV</li>
+        <li>CI/CD workflow security for GitHub Actions</li>
+        <li>Cloud and Kubernetes posture checks</li>
+        <li>Ignore rules, baselines and severity gates</li>
+        <li>Custom rules for your own code patterns</li>
+        <li>Upgrade notes: breaking changes before you bump a package</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Get your first verdict free</h2>
+    <p>
+      One repository, one report, no obligation: the findings, the evidence behind each one, the
+      fixes we can prepare, and an honest note on what we couldn't check.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
+      <a class="btn btn-ghost" href="/sample-report.html">See a sample report</a>
+      <span class="btn-note">Reply within two business days.</span>
+    </div>
+    <div class="scoped">
+      <strong>We never scan first.</strong> Nothing is tested until you've named the target in
+      writing and confirmed you're authorised to have it tested.
+    </div>
+  </div>
+
+
+  <footer>
+    <div>Verdict Runtime &mdash; application and AI security</div>
+    <div>Built by a small, independent security team with a background in offensive security and enterprise vulnerability management.</div>
+    <div>Israel &middot; <a href="mailto:security@verdictruntime.com">security@verdictruntime.com</a></div>
+    <div class="footer-links"><a href="/how-it-works/">How it works</a> &middot; <a href="/benchmark/">Benchmark</a> &middot; <a href="/coverage/">Coverage</a> &middot; <a href="/defense/">Defense</a> &middot; <a href="/integrations/">Integrations</a> &middot; <a href="/deployment/">Deployment</a> &middot; <a href="/security/">Security</a> &middot; <a href="/faq/">FAQ</a> &middot; <a href="/sample-report.html">Sample report</a></div>
+  </footer>
+
+</div>
+
+<div id="consent-banner" class="consent" hidden role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <p>
+    This page uses Google Analytics to see which pages get read and where visitors come
+    from. It only runs if you say yes, and nothing loads before that.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn consent-btn-ghost">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn consent-btn-solid">Accept</button>
+  </div>
+</div>
+
+</body>
+</html>

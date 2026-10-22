@@ -381,6 +381,8 @@ img { max-width: 100%; }
   }
 
   footer a { color: var(--text-muted); }
+  .footer-links { line-height: 1.9; }
+  .hero-page { padding-bottom: 8px; }
 
   @media (max-width: 560px) {
     .rung { grid-template-columns: 1fr; gap: 8px; }
