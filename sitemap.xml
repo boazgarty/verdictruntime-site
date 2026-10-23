@@ -2,34 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://verdictruntime.com/</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://verdictruntime.com/sample-report.html</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/how-it-works/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/benchmark/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/coverage/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/defense/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/integrations/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/deployment/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/security/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://verdictruntime.com/faq/</loc>
+    <lastmod>2026-10-23</lastmod>
   </url>
 </urlset>
