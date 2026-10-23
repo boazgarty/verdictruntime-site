@@ -88,6 +88,48 @@
       Java is the one language where both beat us, and we show it. Both tools ran at their documented security settings. Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.
     </p>
 
+    <h3 class="bench-sub">Round 1b: more real flaws, on a benchmark built to trip scanners up</h3>
+    <p class="caption">
+      Most of this industry-standard Python benchmark is bait: of its 1,230 test cases, 63% are safe code dressed up to
+      look vulnerable. A good scanner finds the real flaws and stays quiet on the rest. That is exactly how it is scored.
+    </p>
+    <div class="stats stats-tight">
+      <div class="stat"><div class="stat-n ok">45% more</div><div class="stat-l">real flaws found than Snyk Code</div></div>
+      <div class="stat"><div class="stat-n ok">39.7</div><div class="stat-l">Verdict Runtime benchmark score</div></div>
+      <div class="stat"><div class="stat-n">27.5</div><div class="stat-l">Snyk Code benchmark score</div></div>
+      <div class="stat"><div class="stat-n ok">8 to 3</div><div class="stat-l">vulnerability classes won (3 tied)</div></div>
+    </div>
+    <div class="table-scroll">
+      <table class="bench-table">
+        <thead>
+          <tr><th>Vulnerability class</th><th class="num us-h">Verdict Runtime</th><th class="num">Snyk Code</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SQL injection</td><td class="num us">100</td><td class="num">0</td></tr>
+          <tr><td>Weak hashing</td><td class="num">100</td><td class="num">100</td></tr>
+          <tr><td>Insecure deserialization</td><td class="num us">66.7</td><td class="num">55.6</td></tr>
+          <tr><td>Open redirect</td><td class="num us">56.8</td><td class="num">40.7</td></tr>
+          <tr><td>Trust boundary violation</td><td class="num us">44.4</td><td class="num">0</td></tr>
+          <tr><td>Path traversal</td><td class="num us">39.1</td><td class="num">&minus;3.2</td></tr>
+          <tr><td>LDAP injection</td><td class="num us">37.5</td><td class="num">0</td></tr>
+          <tr><td>XPath injection</td><td class="num us">36.5</td><td class="num">23.2</td></tr>
+          <tr><td>Cross-site scripting</td><td class="num us">19.1</td><td class="num">18.0</td></tr>
+          <tr><td>Command injection</td><td class="num">0</td><td class="num">16.5</td></tr>
+          <tr><td>Code injection</td><td class="num">0</td><td class="num">13.6</td></tr>
+          <tr><td>Insecure cookie</td><td class="num">0</td><td class="num">100</td></tr>
+          <tr><td>XML external entities</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr><td>Weak randomness</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr class="total"><td>Overall</td><td class="num us">39.7</td><td class="num">27.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">
+      Score = share of real flaws found minus share of safe cases flagged, the benchmark&rsquo;s own method (100 is perfect,
+      0 is chance); a hit counts only if it names the right weakness type (CWE). We found 55% of real flaws to Snyk Code&rsquo;s 38%;
+      Snyk Code flagged fewer safe cases (10% vs 15%) and wins three classes, where broad audit rules we ship also flag every
+      safe variant. Synthetic benchmark, early release, one run per tool, 2026-10-23.
+    </p>
+
     <h3 class="bench-sub">Round 2: what Snyk Code and CodeQL don&rsquo;t do</h3>
     <div class="table-scroll">
       <table class="bench-table vs">
