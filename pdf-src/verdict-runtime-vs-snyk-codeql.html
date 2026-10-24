@@ -1,0 +1,141 @@
+<!doctype html>
+<!-- Source for verdict-runtime-vs-snyk-codeql.pdf (not deployed). Rebuild:
+     chrome-headless-shell --no-pdf-header-footer --print-to-pdf=../verdict-runtime-vs-snyk-codeql.pdf verdict-runtime-vs-snyk-codeql.html
+     Numbers come from code-scanner docs/scanner-comparison.md ("Summary", "For marketing"). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verdict Runtime vs Snyk Code and CodeQL</title>
+<style>
+  @page { size: A4; margin: 12mm 15mm; }
+  :root { --ink:#16201d; --muted:#5d6a66; --brand:#2f7a6c; --tint:#e3f0ec; --line:#d6dedb; --dark:#16201d; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.45; background:#fff; }
+  .mono { font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace; }
+  header { display:flex; justify-content:space-between; align-items:flex-start; }
+  .logo { display:flex; align-items:center; gap:8px; font-size:17pt; font-weight:700; }
+  .logo .mark { width:24px; height:24px; border-radius:5px; background:var(--brand); position:relative; }
+  .logo .mark::after { content:""; position:absolute; left:7px; top:6px; width:9px; height:11px; border-radius:0 5px 5px 0; background:#fff; }
+  .logo span.light { font-weight:400; color:var(--muted); }
+  .meta { text-align:right; font-size:8.5pt; color:var(--muted); line-height:1.6; }
+  .meta b { color:var(--ink); }
+  h1 { font-size:21pt; line-height:1.15; margin:14px 0 6px; max-width:15em; }
+  .sub { color:var(--muted); margin:0 0 12px; max-width:34em; }
+  hr.rule { border:0; border-top:3px solid var(--brand); margin:0 0 14px; }
+  .callout { background:var(--tint); border-left:5px solid var(--brand); border-radius:6px; padding:12px 16px; margin-bottom:14px; }
+  .callout b { color:var(--brand); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:16px; }
+  .stat { border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+  .stat .n { font-size:22pt; font-weight:700; color:var(--brand); line-height:1.1; }
+  .stat .n small { font-size:11pt; color:var(--muted); font-weight:600; }
+  .stat .l { font-size:8.5pt; color:var(--muted); margin-top:4px; }
+  h2 { font-size:12.5pt; margin:12px 0 5px; display:flex; align-items:center; gap:8px; }
+  h2::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--brand); }
+  .note { font-size:8.5pt; color:var(--muted); margin:0 0 8px; }
+  table { width:100%; border-collapse:collapse; font-size:9.5pt; }
+  thead th { background:var(--dark); color:#fff; font-weight:600; font-size:8pt; letter-spacing:.04em; text-transform:uppercase; padding:7px 10px; text-align:right; }
+  thead th:first-child { text-align:left; border-radius:6px 0 0 0; }
+  thead th:last-child { border-radius:0 6px 0 0; }
+  td { padding:4.5px 10px; border-bottom:1px solid var(--line); text-align:right; }
+  td:first-child { text-align:left; }
+  td.us { color:var(--brand); font-weight:700; }
+  tr.total td { background:var(--tint); font-weight:700; border-top:2px solid var(--brand); }
+  .page2 { page-break-before: always; }
+  .box { border:1px solid var(--brand); border-radius:8px; background:var(--tint); padding:12px 16px; }
+  .box ul { margin:6px 0; padding-left:18px; }
+  .tag { font-size:7.5pt; background:var(--brand); color:#fff; border-radius:10px; padding:2px 8px; letter-spacing:.05em; }
+  .method { font-size:7.8pt; color:var(--muted); border-top:1px solid var(--line); margin-top:14px; padding-top:8px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><div class="mark"></div>Verdict <span class="light">Runtime</span></div>
+  <div class="meta mono">BENCHMARK<br><b>2026-10-24</b><br>12 apps &middot; 6 languages</div>
+</header>
+<h1>We find more labelled flaws than Snyk Code and CodeQL</h1>
+<p class="sub">Head-to-head on twelve deliberately vulnerable applications, scored against each app&rsquo;s own labels, plus a live layer that <em>proves</em> findings.</p>
+<hr class="rule">
+
+<div class="callout">
+  On <b>12 deliberately vulnerable applications across 6 languages</b>, Verdict Runtime found <b>107 of 188</b>
+  labelled, statically findable flaws. <b>Snyk Code found 81</b> and <b>GitHub CodeQL found 78</b>. On an
+  industry-standard Python benchmark it scored <b>44.5</b> to Snyk Code&rsquo;s <b>27.5</b>.
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">107<small>/188</small></div><div class="l mono">Flaws found &mdash; Verdict Runtime</div></div>
+  <div class="stat"><div class="n">81</div><div class="l mono">Snyk Code &middot; +26 for us</div></div>
+  <div class="stat"><div class="n">78</div><div class="l mono">GitHub CodeQL &middot; +29 for us</div></div>
+  <div class="stat"><div class="n">44.5</div><div class="l mono">Python benchmark score (Snyk Code 27.5)</div></div>
+</div>
+
+<h2>Round 1: code scanning, like for like</h2>
+<p class="note mono">A flaw counts as found only when the correct vulnerability class is reported within &plusmn;3 lines of the labelled location, scored against an answer key built from each app&rsquo;s own labels.</p>
+<table>
+  <thead><tr><th>Scanner</th><th>Labelled flaws</th><th>Found</th><th>Share</th></tr></thead>
+  <tbody>
+    <tr><td>Verdict Runtime</td><td>188</td><td class="us">107</td><td class="us">57%</td></tr>
+    <tr><td>Snyk Code</td><td>188</td><td>81</td><td>43%</td></tr>
+    <tr><td>GitHub CodeQL</td><td>188</td><td>78</td><td>41%</td></tr>
+  </tbody>
+</table>
+
+<h2>Round 1b: OWASP-style Python benchmark, 1,230 cases</h2>
+<p class="note mono">63% of the cases are safe code made to look vulnerable. Score = share of real flaws found minus share of safe cases flagged (100 is perfect, 0 is chance); a hit counts only if it names the right weakness type (CWE).</p>
+<div class="two">
+  <table>
+    <thead><tr><th>Class</th><th>Us</th><th>Snyk Code</th></tr></thead>
+    <tbody>
+      <tr><td>SQL injection</td><td class="us">100</td><td>0</td></tr>
+      <tr><td>Weak hashing</td><td>100</td><td>100</td></tr>
+      <tr><td>Insecure cookie</td><td>100</td><td>100</td></tr>
+      <tr><td>Command injection</td><td class="us">69.2</td><td>16.5</td></tr>
+      <tr><td>Code injection</td><td class="us">66.7</td><td>13.6</td></tr>
+      <tr><td>Insecure deserialization</td><td class="us">66.7</td><td>55.6</td></tr>
+      <tr><td>Open redirect</td><td class="us">56.8</td><td>40.7</td></tr>
+    </tbody>
+  </table>
+  <table>
+    <thead><tr><th>Class</th><th>Us</th><th>Snyk Code</th></tr></thead>
+    <tbody>
+      <tr><td>Trust boundary</td><td class="us">44.4</td><td>0</td></tr>
+      <tr><td>Path traversal</td><td class="us">39.1</td><td>&minus;3.2</td></tr>
+      <tr><td>LDAP injection</td><td class="us">37.5</td><td>0</td></tr>
+      <tr><td>XPath injection</td><td class="us">36.5</td><td>23.2</td></tr>
+      <tr><td>Cross-site scripting</td><td class="us">19.1</td><td>18.0</td></tr>
+      <tr><td>XML external entities</td><td>0</td><td>0</td></tr>
+      <tr><td>Weak randomness</td><td>0</td><td>0</td></tr>
+      <tr class="total"><td>Overall</td><td class="us">44.5</td><td>27.5</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="note mono" style="margin-top:8px">10 classes won, 4 tied, none lost. 54% of real flaws found vs 38%, with fewer safe cases flagged (9.5% vs 10.3%).</p>
+
+<div class="page2">
+  <h2>The layer the static scanners don&rsquo;t have <span class="tag mono">LIVE PROOF</span></h2>
+  <div class="box">
+    <b>9 additional vulnerabilities confirmed by actually exploiting three of the running apps</b>
+    <p style="margin:6px 0">Verdict Runtime doesn&rsquo;t just read code: its agents send real, scope-authorised requests and
+    <b>prove</b> each finding against the live application, with a reproducing request each:</p>
+    <ul>
+      <li><b>Broken object authorisation (BOLA/IDOR)</b> &mdash; one account read another account&rsquo;s private data</li>
+      <li><b>Authentication-token forgery</b> &mdash; an unsigned (<span class="mono">alg:none</span>) token accepted as valid</li>
+      <li><b>Exposed admin / debug surfaces</b> &mdash; internal config and server logs served to an unauthenticated request</li>
+      <li><b>Missing login rate-limiting &amp; weak session cookies</b></li>
+    </ul>
+    <p style="margin:6px 0 0"><b>Static scanners, Snyk Code and CodeQL included, cannot prove any of these.</b> Broken
+    authorisation and token forgery are logic flaws that only show up when you exercise the live application.</p>
+  </div>
+
+  <p class="method"><b>Method &amp; scope.</b> Twelve deliberately vulnerable training applications in six languages
+  (JavaScript/TypeScript, Python, Java, Ruby, Go, C#), each scored against an answer key built from the app&rsquo;s own
+  labels; a detection counts only when the correct vulnerability class is reported within &plusmn;3 lines. Each
+  competing scanner ran at its documented security settings (Snyk Code; CodeQL security-extended suites). The Python
+  benchmark is synthetic and an early release; one run per tool (Verdict Runtime 2026-10-24, Snyk Code 2026-10-23).
+  The live-proof results come from Verdict Runtime&rsquo;s agents against disposable, explicitly authorised local
+  instances. These are labelled training targets, so the results show a measured lead on this suite, not a claim of
+  universal superiority. Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.</p>
+</div>
+</body>
+</html>

@@ -49,43 +49,39 @@
 
   <section id="benchmark">
     <div class="sec-head">
-      <div class="eyebrow">Benchmark &middot; 2026-10-18</div>
-      <h2>We out-scan Snyk and CodeQL. Then we keep going.</h2>
+      <div class="eyebrow">Benchmark &middot; 2026-10-24</div>
+      <h2>More labelled flaws found than Snyk Code and CodeQL. Then we keep going.</h2>
       <p>
-        We ran Verdict Runtime head to head against Snyk Code and GitHub CodeQL, on seven
-        deliberately vulnerable applications across six languages. Each app was scored against its own
-        published answer key. Static scanning was only the first round.
+        We ran Verdict Runtime head to head against Snyk Code and GitHub CodeQL on twelve
+        deliberately vulnerable applications across six languages. Each app was scored against an answer key
+        built from its own labels. Static scanning was only the first round.
       </p>
     </div>
 
     <div class="stats stats-tight">
-      <div class="stat"><div class="stat-n ok">78</div><div class="stat-l">of 152 labelled flaws found by Verdict Runtime</div></div>
-      <div class="stat"><div class="stat-n">66</div><div class="stat-l">found by GitHub CodeQL</div></div>
-      <div class="stat"><div class="stat-n">65</div><div class="stat-l">found by Snyk Code</div></div>
-      <div class="stat"><div class="stat-n ok">5 of 6</div><div class="stat-l">languages where we found the most</div></div>
+      <div class="stat"><div class="stat-n ok">107</div><div class="stat-l">of 188 labelled flaws found by Verdict Runtime</div></div>
+      <div class="stat"><div class="stat-n">81</div><div class="stat-l">found by Snyk Code</div></div>
+      <div class="stat"><div class="stat-n">78</div><div class="stat-l">found by GitHub CodeQL</div></div>
+      <div class="stat"><div class="stat-n ok">12</div><div class="stat-l">apps across 6 languages</div></div>
     </div>
 
     <h3 class="bench-sub">Round 1: code scanning, like for like</h3>
     <div class="table-scroll">
       <table class="bench-table">
         <thead>
-          <tr><th>Benchmark app</th><th class="num">Labelled flaws</th><th class="num us-h">Verdict Runtime</th><th class="num">CodeQL</th><th class="num">Snyk Code</th></tr>
+          <tr><th>Scanner</th><th class="num">Labelled flaws</th><th class="num">Found</th><th class="num">Share</th></tr>
         </thead>
         <tbody>
-          <tr><td>Python (Django)</td><td class="num">29</td><td class="num us">24</td><td class="num">16</td><td class="num">16</td></tr>
-          <tr><td>Ruby on Rails</td><td class="num">17</td><td class="num us">10</td><td class="num">8</td><td class="num">7</td></tr>
-          <tr><td>JavaScript (Node app 1)</td><td class="num">17</td><td class="num us">10</td><td class="num">6</td><td class="num">8</td></tr>
-          <tr><td>JavaScript (Node app 2)</td><td class="num">9</td><td class="num us">6</td><td class="num">6</td><td class="num">3</td></tr>
-          <tr><td>Go</td><td class="num">4</td><td class="num us">4</td><td class="num">2</td><td class="num">2</td></tr>
-          <tr><td>C# / .NET</td><td class="num">36</td><td class="num us">5</td><td class="num">2</td><td class="num">4</td></tr>
-          <tr><td>Java</td><td class="num">40</td><td class="num">19</td><td class="num">26</td><td class="num">25</td></tr>
-          <tr class="total"><td>All seven</td><td class="num">152</td><td class="num us">78</td><td class="num">66</td><td class="num">65</td></tr>
+          <tr><td>Verdict Runtime</td><td class="num">188</td><td class="num us">107</td><td class="num us">57%</td></tr>
+          <tr><td>Snyk Code</td><td class="num">188</td><td class="num">81</td><td class="num">43%</td></tr>
+          <tr><td>GitHub CodeQL</td><td class="num">188</td><td class="num">78</td><td class="num">41%</td></tr>
         </tbody>
       </table>
     </div>
     <p class="caption">
       A flaw counts only when the right vulnerability class is reported within three lines of the labelled spot.
-      Java is the one language where both beat us, and we show it. Both tools ran at their documented security settings. Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.
+      All twelve are deliberately vulnerable training apps. Both tools ran at their documented security settings.
+      Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.
     </p>
 
     <h3 class="bench-sub">Round 1b: more real flaws, on a benchmark built to trip scanners up</h3>
@@ -94,10 +90,10 @@
       look vulnerable. A good scanner finds the real flaws and stays quiet on the rest. That is exactly how it is scored.
     </p>
     <div class="stats stats-tight">
-      <div class="stat"><div class="stat-n ok">45% more</div><div class="stat-l">real flaws found than Snyk Code</div></div>
-      <div class="stat"><div class="stat-n ok">39.7</div><div class="stat-l">Verdict Runtime benchmark score</div></div>
+      <div class="stat"><div class="stat-n ok">43% more</div><div class="stat-l">real flaws found than Snyk Code</div></div>
+      <div class="stat"><div class="stat-n ok">44.5</div><div class="stat-l">Verdict Runtime benchmark score</div></div>
       <div class="stat"><div class="stat-n">27.5</div><div class="stat-l">Snyk Code benchmark score</div></div>
-      <div class="stat"><div class="stat-n ok">8 to 3</div><div class="stat-l">vulnerability classes won (3 tied)</div></div>
+      <div class="stat"><div class="stat-n ok">10 to 0</div><div class="stat-l">vulnerability classes won (4 tied)</div></div>
     </div>
     <div class="table-scroll">
       <table class="bench-table">
@@ -107,6 +103,9 @@
         <tbody>
           <tr><td>SQL injection</td><td class="num us">100</td><td class="num">0</td></tr>
           <tr><td>Weak hashing</td><td class="num">100</td><td class="num">100</td></tr>
+          <tr><td>Insecure cookie</td><td class="num">100</td><td class="num">100</td></tr>
+          <tr><td>Command injection</td><td class="num us">69.2</td><td class="num">16.5</td></tr>
+          <tr><td>Code injection</td><td class="num us">66.7</td><td class="num">13.6</td></tr>
           <tr><td>Insecure deserialization</td><td class="num us">66.7</td><td class="num">55.6</td></tr>
           <tr><td>Open redirect</td><td class="num us">56.8</td><td class="num">40.7</td></tr>
           <tr><td>Trust boundary violation</td><td class="num us">44.4</td><td class="num">0</td></tr>
@@ -114,20 +113,17 @@
           <tr><td>LDAP injection</td><td class="num us">37.5</td><td class="num">0</td></tr>
           <tr><td>XPath injection</td><td class="num us">36.5</td><td class="num">23.2</td></tr>
           <tr><td>Cross-site scripting</td><td class="num us">19.1</td><td class="num">18.0</td></tr>
-          <tr><td>Command injection</td><td class="num">0</td><td class="num">16.5</td></tr>
-          <tr><td>Code injection</td><td class="num">0</td><td class="num">13.6</td></tr>
-          <tr><td>Insecure cookie</td><td class="num">0</td><td class="num">100</td></tr>
           <tr><td>XML external entities</td><td class="num">0</td><td class="num">0</td></tr>
           <tr><td>Weak randomness</td><td class="num">0</td><td class="num">0</td></tr>
-          <tr class="total"><td>Overall</td><td class="num us">39.7</td><td class="num">27.5</td></tr>
+          <tr class="total"><td>Overall</td><td class="num us">44.5</td><td class="num">27.5</td></tr>
         </tbody>
       </table>
     </div>
     <p class="caption">
       Score = share of real flaws found minus share of safe cases flagged, the benchmark&rsquo;s own method (100 is perfect,
-      0 is chance); a hit counts only if it names the right weakness type (CWE). We found 55% of real flaws to Snyk Code&rsquo;s 38%;
-      Snyk Code flagged fewer safe cases (10% vs 15%) and wins three classes, where broad audit rules we ship also flag every
-      safe variant. Synthetic benchmark, early release, one run per tool, 2026-10-23.
+      0 is chance); a hit counts only if it names the right weakness type (CWE). We found 54% of real flaws to Snyk Code&rsquo;s 38%,
+      and flagged fewer safe cases (9.5% vs 10.3%). Synthetic benchmark, early release, one run per tool
+      (Verdict Runtime 2026-10-24, Snyk Code 2026-10-23).
     </p>
 
     <h3 class="bench-sub">Round 2: what Snyk Code and CodeQL don&rsquo;t do</h3>
@@ -148,15 +144,15 @@
     </div>
 
     <div class="bench-live">
-      <strong>On the same benchmark, our live pentest agents proved 9 more vulnerabilities</strong> that Snyk Code and CodeQL
-      cannot report: one account reading another account's private data, a forged unsigned
+      <strong>On three of these apps, our live pentest agents proved 9 vulnerabilities exploitable</strong>, something
+      static scanning cannot do: one account reading another account's private data, a forged unsigned
       login token accepted as valid, internal configuration and server logs open to anyone, and logins
       with no brute-force protection. Every one was reproduced with a real request.
     </div>
 
     <div class="cta-row">
       <a class="btn btn-ghost" href="/verdict-runtime-vs-snyk-codeql.pdf" download>Download the benchmark (PDF)</a>
-      <span class="btn-note">All seven benchmark apps are deliberately vulnerable training apps. Your code will differ, so start with a free assessment.</span>
+      <span class="btn-note">All twelve benchmark apps are deliberately vulnerable training apps. Your code will differ, so start with a free assessment.</span>
     </div>
   </section>
 
