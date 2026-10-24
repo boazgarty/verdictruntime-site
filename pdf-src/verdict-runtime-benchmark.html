@@ -1,11 +1,11 @@
 <!doctype html>
-<!-- Source for verdict-runtime-vs-snyk-codeql.pdf (not deployed). Rebuild:
-     chrome-headless-shell --no-pdf-header-footer --print-to-pdf=../verdict-runtime-vs-snyk-codeql.pdf verdict-runtime-vs-snyk-codeql.html
+<!-- Source for verdict-runtime-benchmark.pdf (not deployed). Rebuild:
+     chrome-headless-shell --no-pdf-header-footer --print-to-pdf=../verdict-runtime-benchmark.pdf verdict-runtime-benchmark.html
      Numbers come from code-scanner docs/scanner-comparison.md ("Summary", "For marketing"). -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Verdict Runtime vs Snyk Code and CodeQL</title>
+<title>Verdict Runtime SAST Benchmark</title>
 <style>
   @page { size: A4; margin: 12mm 15mm; }
   :root { --ink:#16201d; --muted:#5d6a66; --brand:#2f7a6c; --tint:#e3f0ec; --line:#d6dedb; --dark:#16201d; }
@@ -53,21 +53,21 @@
   <div class="logo"><div class="mark"></div>Verdict <span class="light">Runtime</span></div>
   <div class="meta mono">BENCHMARK<br><b>2026-10-24</b><br>12 apps &middot; 6 languages</div>
 </header>
-<h1>We find more labelled flaws than Snyk Code and CodeQL</h1>
+<h1>We find more labelled flaws than a leading commercial SAST tool and GitHub CodeQL</h1>
 <p class="sub">Head-to-head on twelve deliberately vulnerable applications, scored against each app&rsquo;s own labels, plus a live layer that <em>proves</em> findings.</p>
 <hr class="rule">
 
 <div class="callout">
   On <b>12 deliberately vulnerable applications across 6 languages</b>, Verdict Runtime found <b>107 of 188</b>
-  labelled, statically findable flaws. <b>Snyk Code found 81</b> and <b>GitHub CodeQL found 78</b>. On an
-  industry-standard Python benchmark it scored <b>44.5</b> to Snyk Code&rsquo;s <b>27.5</b>.
+  labelled, statically findable flaws. <b>A leading commercial SAST tool found 81</b> and <b>GitHub CodeQL found 78</b>. On an
+  industry-standard Python benchmark it scored <b>44.5</b> to the commercial tool&rsquo;s <b>27.5</b>.
 </div>
 
 <div class="stats">
   <div class="stat"><div class="n">107<small>/188</small></div><div class="l mono">Flaws found &mdash; Verdict Runtime</div></div>
-  <div class="stat"><div class="n">81</div><div class="l mono">Snyk Code &middot; +26 for us</div></div>
+  <div class="stat"><div class="n">81</div><div class="l mono">Commercial SAST tool &middot; +26 for us</div></div>
   <div class="stat"><div class="n">78</div><div class="l mono">GitHub CodeQL &middot; +29 for us</div></div>
-  <div class="stat"><div class="n">44.5</div><div class="l mono">Python benchmark score (Snyk Code 27.5)</div></div>
+  <div class="stat"><div class="n">44.5</div><div class="l mono">Python benchmark score (commercial SAST tool 27.5)</div></div>
 </div>
 
 <h2>Round 1: code scanning, like for like</h2>
@@ -76,7 +76,7 @@
   <thead><tr><th>Scanner</th><th>Labelled flaws</th><th>Found</th><th>Share</th></tr></thead>
   <tbody>
     <tr><td>Verdict Runtime</td><td>188</td><td class="us">107</td><td class="us">57%</td></tr>
-    <tr><td>Snyk Code</td><td>188</td><td>81</td><td>43%</td></tr>
+    <tr><td>Commercial SAST tool</td><td>188</td><td>81</td><td>43%</td></tr>
     <tr><td>GitHub CodeQL</td><td>188</td><td>78</td><td>41%</td></tr>
   </tbody>
 </table>
@@ -85,7 +85,7 @@
 <p class="note mono">63% of the cases are safe code made to look vulnerable. Score = share of real flaws found minus share of safe cases flagged (100 is perfect, 0 is chance); a hit counts only if it names the right weakness type (CWE).</p>
 <div class="two">
   <table>
-    <thead><tr><th>Class</th><th>Us</th><th>Snyk Code</th></tr></thead>
+    <thead><tr><th>Class</th><th>Us</th><th>Commercial SAST tool</th></tr></thead>
     <tbody>
       <tr><td>SQL injection</td><td class="us">100</td><td>0</td></tr>
       <tr><td>Weak hashing</td><td>100</td><td>100</td></tr>
@@ -97,7 +97,7 @@
     </tbody>
   </table>
   <table>
-    <thead><tr><th>Class</th><th>Us</th><th>Snyk Code</th></tr></thead>
+    <thead><tr><th>Class</th><th>Us</th><th>Commercial SAST tool</th></tr></thead>
     <tbody>
       <tr><td>Trust boundary</td><td class="us">44.4</td><td>0</td></tr>
       <tr><td>Path traversal</td><td class="us">39.1</td><td>&minus;3.2</td></tr>
@@ -124,18 +124,18 @@
       <li><b>Exposed admin / debug surfaces</b> &mdash; internal config and server logs served to an unauthenticated request</li>
       <li><b>Missing login rate-limiting &amp; weak session cookies</b></li>
     </ul>
-    <p style="margin:6px 0 0"><b>Static scanners, Snyk Code and CodeQL included, cannot prove any of these.</b> Broken
+    <p style="margin:6px 0 0"><b>Static scanners, the commercial tool and CodeQL included, cannot prove any of these.</b> Broken
     authorisation and token forgery are logic flaws that only show up when you exercise the live application.</p>
   </div>
 
   <p class="method"><b>Method &amp; scope.</b> Twelve deliberately vulnerable training applications in six languages
   (JavaScript/TypeScript, Python, Java, Ruby, Go, C#), each scored against an answer key built from the app&rsquo;s own
   labels; a detection counts only when the correct vulnerability class is reported within &plusmn;3 lines. Each
-  competing scanner ran at its documented security settings (Snyk Code; CodeQL security-extended suites). The Python
-  benchmark is synthetic and an early release; one run per tool (Verdict Runtime 2026-10-24, Snyk Code 2026-10-23).
+  competing scanner ran at its documented security settings (the commercial tool's default security rules; CodeQL security-extended suites). The Python
+  benchmark is synthetic and an early release; one run per tool (Verdict Runtime 2026-10-24, commercial SAST tool 2026-10-23).
   The live-proof results come from Verdict Runtime&rsquo;s agents against disposable, explicitly authorised local
   instances. These are labelled training targets, so the results show a measured lead on this suite, not a claim of
-  universal superiority. Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.</p>
+  universal superiority. CodeQL is a trademark of GitHub, Inc.</p>
 </div>
 </body>
 </html>

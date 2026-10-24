@@ -608,7 +608,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 }
 :root[data-theme="dark"] .btn-ghost { background: transparent; color: var(--accent-deep); border-color: var(--line-strong); }
 
-/* ---------- benchmark vs Snyk Code / CodeQL (2026-10-18) ---------- */
+/* ---------- benchmark vs CodeQL / commercial SAST (2026-10-18) ---------- */
 .stats-tight { margin-top: 4px; }
 .bench-sub { font-size: 18px; font-weight: 700; letter-spacing: -.012em; margin: 34px 0 12px; }
 .bench-table td.num, .bench-table th.num { text-align: center; font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; }

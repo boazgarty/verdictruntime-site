@@ -134,9 +134,9 @@
   <section id="benchmark">
     <div class="sec-head">
       <div class="eyebrow">Benchmark &middot; 2026-10-24</div>
-      <h2>More labelled flaws found than Snyk Code and CodeQL. Then we keep going.</h2>
+      <h2>More labelled flaws found than a leading commercial SAST tool and GitHub CodeQL. Then we keep going.</h2>
       <p>
-        We ran Verdict Runtime head to head against Snyk Code and GitHub CodeQL on twelve
+        We ran Verdict Runtime head to head against a leading commercial SAST tool and GitHub CodeQL on twelve
         deliberately vulnerable applications across six languages. Each app was scored against an answer key
         built from its own labels. Static scanning was only the first round.
       </p>
@@ -144,7 +144,7 @@
 
     <div class="stats stats-tight">
       <div class="stat"><div class="stat-n ok">107</div><div class="stat-l">of 188 labelled flaws found by Verdict Runtime</div></div>
-      <div class="stat"><div class="stat-n">81</div><div class="stat-l">found by Snyk Code</div></div>
+      <div class="stat"><div class="stat-n">81</div><div class="stat-l">found by a leading commercial SAST tool</div></div>
       <div class="stat"><div class="stat-n">78</div><div class="stat-l">found by GitHub CodeQL</div></div>
       <div class="stat"><div class="stat-n ok">12</div><div class="stat-l">apps across 6 languages</div></div>
     </div>
@@ -157,7 +157,7 @@
         </thead>
         <tbody>
           <tr><td>Verdict Runtime</td><td class="num">188</td><td class="num us">107</td><td class="num us">57%</td></tr>
-          <tr><td>Snyk Code</td><td class="num">188</td><td class="num">81</td><td class="num">43%</td></tr>
+          <tr><td>Commercial SAST tool</td><td class="num">188</td><td class="num">81</td><td class="num">43%</td></tr>
           <tr><td>GitHub CodeQL</td><td class="num">188</td><td class="num">78</td><td class="num">41%</td></tr>
         </tbody>
       </table>
@@ -165,7 +165,7 @@
     <p class="caption">
       A flaw counts only when the right vulnerability class is reported within three lines of the labelled spot.
       All twelve are deliberately vulnerable training apps. Both tools ran at their documented security settings.
-      Snyk is a trademark of Snyk Limited; CodeQL is a trademark of GitHub, Inc.
+      CodeQL is a trademark of GitHub, Inc.
     </p>
 
     <h3 class="bench-sub">Round 1b: more real flaws, on a benchmark built to trip scanners up</h3>
@@ -174,15 +174,15 @@
       look vulnerable. A good scanner finds the real flaws and stays quiet on the rest. That is exactly how it is scored.
     </p>
     <div class="stats stats-tight">
-      <div class="stat"><div class="stat-n ok">43% more</div><div class="stat-l">real flaws found than Snyk Code</div></div>
+      <div class="stat"><div class="stat-n ok">43% more</div><div class="stat-l">real flaws found than the commercial SAST tool</div></div>
       <div class="stat"><div class="stat-n ok">44.5</div><div class="stat-l">Verdict Runtime benchmark score</div></div>
-      <div class="stat"><div class="stat-n">27.5</div><div class="stat-l">Snyk Code benchmark score</div></div>
+      <div class="stat"><div class="stat-n">27.5</div><div class="stat-l">Commercial SAST tool benchmark score</div></div>
       <div class="stat"><div class="stat-n ok">10 to 0</div><div class="stat-l">vulnerability classes won (4 tied)</div></div>
     </div>
     <div class="table-scroll">
       <table class="bench-table">
         <thead>
-          <tr><th>Vulnerability class</th><th class="num us-h">Verdict Runtime</th><th class="num">Snyk Code</th></tr>
+          <tr><th>Vulnerability class</th><th class="num us-h">Verdict Runtime</th><th class="num">Commercial SAST tool</th></tr>
         </thead>
         <tbody>
           <tr><td>SQL injection</td><td class="num us">100</td><td class="num">0</td></tr>
@@ -205,16 +205,16 @@
     </div>
     <p class="caption">
       Score = share of real flaws found minus share of safe cases flagged, the benchmark&rsquo;s own method (100 is perfect,
-      0 is chance); a hit counts only if it names the right weakness type (CWE). We found 54% of real flaws to Snyk Code&rsquo;s 38%,
+      0 is chance); a hit counts only if it names the right weakness type (CWE). We found 54% of real flaws to the commercial tool&rsquo;s 38%,
       and flagged fewer safe cases (9.5% vs 10.3%). Synthetic benchmark, early release, one run per tool
-      (Verdict Runtime 2026-10-24, Snyk Code 2026-10-23).
+      (Verdict Runtime 2026-10-24, commercial SAST tool 2026-10-23).
     </p>
 
-    <h3 class="bench-sub">Round 2: what Snyk Code and CodeQL don&rsquo;t do</h3>
+    <h3 class="bench-sub">Round 2: what static scanners don&rsquo;t do</h3>
     <div class="table-scroll">
       <table class="bench-table vs">
         <thead>
-          <tr><th>Capability</th><th class="num us-h">Verdict Runtime</th><th class="num">Snyk Code &amp; CodeQL</th></tr>
+          <tr><th>Capability</th><th class="num us-h">Verdict Runtime</th><th class="num">Commercial SAST &amp; CodeQL</th></tr>
         </thead>
         <tbody>
           <tr><td class="what">Static code analysis</td><td class="num yes">Yes</td><td class="num yes">Yes</td></tr>
@@ -235,7 +235,7 @@
     </div>
 
     <div class="cta-row">
-      <a class="btn btn-ghost" href="verdict-runtime-vs-snyk-codeql.pdf" download>Download the benchmark (PDF)</a>
+      <a class="btn btn-ghost" href="verdict-runtime-benchmark.pdf" download>Download the benchmark (PDF)</a>
       <span class="btn-note">All twelve benchmark apps are deliberately vulnerable training apps. Your code will differ, so start with a free assessment.</span>
     </div>
   </section>
