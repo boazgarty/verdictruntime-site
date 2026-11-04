@@ -53,19 +53,21 @@
   <div class="logo"><div class="mark"></div>Verdict <span class="light">Runtime</span></div>
   <div class="meta mono">BENCHMARK<br><b>2026-11-04</b><br>10 apps &middot; 5 languages</div>
 </header>
-<h1>We find more labelled flaws than GitHub CodeQL</h1>
+<h1>We find more labelled flaws than a leading commercial SAST tool and GitHub CodeQL</h1>
 <p class="sub">Head-to-head on ten deliberately vulnerable open-source applications, scored against each app&rsquo;s own labels, plus a live layer that <em>proves</em> findings.</p>
 <hr class="rule">
 
 <div class="callout">
   On <b>10 deliberately vulnerable open-source applications across 5 languages</b>, Verdict Runtime found
-  <b>92 of 167</b> labelled, statically findable flaws. <b>GitHub CodeQL found 68</b>.
+  <b>92 of 167</b> labelled, statically findable flaws. <b>A leading commercial SAST tool found 72</b> and <b>GitHub
+  CodeQL found 68</b>. On an industry-standard Python benchmark it scored <b>58.5</b> to the commercial tool&rsquo;s <b>27.5</b>.
 </div>
 
 <div class="stats">
   <div class="stat"><div class="n">92<small>/167</small></div><div class="l mono">Flaws found &mdash; Verdict Runtime</div></div>
+  <div class="stat"><div class="n">72</div><div class="l mono">Commercial SAST tool &middot; +20 for us</div></div>
   <div class="stat"><div class="n">68</div><div class="l mono">GitHub CodeQL &middot; +24 for us</div></div>
-  <div class="stat"><div class="n">10</div><div class="l mono">Apps &middot; 5 languages</div></div>
+  <div class="stat"><div class="n">58.5</div><div class="l mono">Python benchmark score (commercial SAST tool 27.5)</div></div>
 </div>
 
 <h2>Round 1: code scanning, like for like</h2>
@@ -74,9 +76,41 @@
   <thead><tr><th>Scanner</th><th>Labelled flaws</th><th>Found</th><th>Share</th></tr></thead>
   <tbody>
     <tr><td>Verdict Runtime</td><td>167</td><td class="us">92</td><td class="us">55%</td></tr>
+    <tr><td>Commercial SAST tool</td><td>167</td><td>72</td><td>43%</td></tr>
     <tr><td>GitHub CodeQL</td><td>167</td><td>68</td><td>41%</td></tr>
   </tbody>
 </table>
+
+<h2>Round 1b: OWASP-style Python benchmark, 1,230 cases</h2>
+<p class="note mono">63% of the cases are safe code made to look vulnerable. Score = share of real flaws found minus share of safe cases flagged (100 is perfect, 0 is chance); a hit counts only if it names the right weakness type (CWE).</p>
+<div class="two">
+  <table>
+    <thead><tr><th>Class</th><th>Us</th><th>Commercial SAST tool</th></tr></thead>
+    <tbody>
+      <tr><td>SQL injection</td><td>0</td><td>0</td></tr>
+      <tr><td>Weak hashing</td><td>100</td><td>100</td></tr>
+      <tr><td>Insecure cookie</td><td>100</td><td>100</td></tr>
+      <tr><td>Weak randomness</td><td class="us">74.7</td><td>0</td></tr>
+      <tr><td>Insecure deserialization</td><td class="us">66.7</td><td>55.6</td></tr>
+      <tr><td>Open redirect</td><td class="us">54.9</td><td>40.7</td></tr>
+      <tr><td>LDAP injection</td><td class="us">43.8</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <table>
+    <thead><tr><th>Class</th><th>Us</th><th>Commercial SAST tool</th></tr></thead>
+    <tbody>
+      <tr><td>Cross-site scripting</td><td class="us">43.0</td><td>18.0</td></tr>
+      <tr><td>XPath injection</td><td class="us">40.2</td><td>23.2</td></tr>
+      <tr><td>Trust boundary</td><td class="us">39.2</td><td>0</td></tr>
+      <tr><td>Path traversal</td><td class="us">37.1</td><td>&minus;3.2</td></tr>
+      <tr><td>Command injection</td><td>0</td><td class="us">16.5</td></tr>
+      <tr><td>Code injection</td><td>0</td><td class="us">13.6</td></tr>
+      <tr><td>XML external entities</td><td>0</td><td>0</td></tr>
+      <tr class="total"><td>Overall</td><td class="us">58.5</td><td>27.5</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="note mono" style="margin-top:8px">8 classes won, 4 tied, 2 lost. 74% of real flaws found vs 38%, with more safe cases flagged (15.2% vs 10.3%).</p>
 
 <div class="page2">
   <h2>The layer the static scanners don&rsquo;t have <span class="tag mono">LIVE PROOF</span></h2>
@@ -90,7 +124,7 @@
       <li><b>Exposed admin / debug surfaces</b> &mdash; internal config and server logs served to an unauthenticated request</li>
       <li><b>Missing login rate-limiting &amp; weak session cookies</b></li>
     </ul>
-    <p style="margin:6px 0 0"><b>Static scanners, CodeQL included, cannot prove any of these.</b> Broken
+    <p style="margin:6px 0 0"><b>Static scanners, the commercial tool and CodeQL included, cannot prove any of these.</b> Broken
     authorisation and token forgery are logic flaws that only show up when you exercise the live application.</p>
   </div>
 
@@ -107,9 +141,10 @@
 
   <p class="method"><b>Method &amp; scope.</b> Ten deliberately vulnerable open-source training applications in five
   languages (JavaScript/TypeScript, Python, Java, Go, C#), each scored against an answer key built from the app&rsquo;s own
-  labels; a detection counts only when the correct vulnerability class is reported within &plusmn;3 lines. CodeQL ran
-  its security-extended suites; Verdict Runtime ran its standard code, secrets and infrastructure-as-code scan
-  (2026-11-04). The live-proof results come from Verdict Runtime&rsquo;s agents against disposable, explicitly
+  labels; a detection counts only when the correct vulnerability class is reported within &plusmn;3 lines. Each
+  competing scanner ran at its documented security settings (the commercial tool's default security rules; CodeQL
+  security-extended suites); Verdict Runtime ran its standard code, secrets and infrastructure-as-code scan. The Python
+  benchmark is synthetic and an early release; one run per tool (Verdict Runtime 2026-11-04, commercial SAST tool 2026-10-23). The live-proof results come from Verdict Runtime&rsquo;s agents against disposable, explicitly
   authorised local instances. These are labelled training targets, so the results show a measured lead on this suite,
   not a claim of universal superiority. CodeQL is a trademark of GitHub, Inc.</p>
 </div>

@@ -16,9 +16,9 @@ SITE = "https://verdictruntime.com"
 # slug, section ids/headings to copy, <title>, meta description, eyebrow, h1
 PAGES = [
     ("benchmark", ["id=\"benchmark\""],
-     "SAST Benchmark vs GitHub CodeQL - Verdict Runtime",
-     "How Verdict Runtime compares with GitHub CodeQL on deliberately vulnerable open-source applications with labelled flaws, scored against each app's own answer key.",
-     "Benchmark", "Verdict Runtime vs GitHub CodeQL"),
+     "SAST Benchmark vs CodeQL and a Commercial Scanner - Verdict Runtime",
+     "How Verdict Runtime compares with GitHub CodeQL and a leading commercial SAST tool on deliberately vulnerable open-source applications with labelled flaws, scored against each app's own answer key.",
+     "Benchmark", "Verdict Runtime vs CodeQL and a commercial SAST tool"),
     ("how-it-works", ["id=\"how\"", "Every finding says how sure we are"],
      "How It Works - Verdict Runtime",
      "Find it, prove it, fix it, protect it: how Verdict Runtime scans, verifies exploits live against your running app, prepares fixes and labels every finding with its evidence.",
