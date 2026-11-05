@@ -406,12 +406,32 @@
       <div class="cell"><h3><span class="dot"></span>Kubernetes admission</h3><p>Admission policies that can block the misconfigurations your scan found.</p></div>
       <div class="cell"><h3><span class="dot"></span>Runtime detection</h3><p>Detection rules that alert when someone attacks the exact weakness you have.</p></div>
       <div class="cell"><h3><span class="dot"></span>Secret rotation</h3><p>Step-by-step runbooks for every leaked credential, per provider.</p></div>
-      <div class="cell"><h3><span class="dot"></span>LLM guardrails</h3><p>Guardrail configurations against the prompt attacks that actually worked on your app.</p></div>
+      <div class="cell"><h3><span class="dot"></span>AI agent guard</h3><p>A runtime guard in front of your AI agent, with rules built from the prompt attacks that actually worked on it. Also exports to AWS Bedrock Guardrails.</p></div>
     </div>
     <p class="flow-note">
       <strong>Observe before enforce.</strong> Every artifact ships in detect-only mode, so nothing is
       blocked until you're ready. And a coverage matrix names, honestly, what no rule can defend.
     </p>
+
+    <div class="agent-def">
+      <h3>AI agent defense: one engine attacks, defends and verifies</h3>
+      <p>
+        The same agents that red-team your AI agent write its defense. A guard sits in front of the agent and
+        enforces rules built from the attacks that succeeded. Then the same attacks run again through the guard
+        to prove they are now blocked, while normal questions still get answered.
+      </p>
+      <div class="wf-video">
+        <video class="demo" controls muted playsinline preload="none" poster="ai-agent-defense-poster.jpg">
+          <source src="ai-agent-defense.mp4?v=1" type="video/mp4">
+          Your browser cannot play this video. <a href="ai-agent-defense.mp4?v=1">Download it</a> instead.
+        </video>
+        <p class="caption">
+          57 seconds, no sound: prompt injection, system prompt leakage and sensitive data disclosure, attacked, guarded
+          and re-tested. Real tool output from one run against our own deliberately vulnerable demo agent, which answers
+          from a deterministic script rather than a live model. The screens are re-created.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section id="integrations">
