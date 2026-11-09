@@ -447,7 +447,7 @@
         <div class="cell"><h3><span class="dot"></span>Memory writes</h3><p>Holds a write to the agent's memory when outside content, such as an email or a web page, triggered it, so one message cannot plant a standing instruction.</p></div>
         <div class="cell"><h3><span class="dot"></span>Owner approval</h3><p>Where a rule asks for a human decision, the action waits for the owner to approve or reject it. An approved call is released once. The held call is stored encrypted and expires.</p></div>
         <div class="cell"><h3><span class="dot"></span>MCP tools</h3><p>Hides MCP tools you did not approve, and refuses a tool whose description or parameters changed after you approved it.</p></div>
-        <div class="cell"><h3><span class="dot"></span>Observe first, then enforce</h3><p>It starts in observe mode: it records what it would have held and changes nothing. It runs as a separate service next to your agent, which you point at the guard's address.</p></div>
+        <div class="cell"><h3><span class="dot"></span>Observe first, then enforce</h3><p>It starts in observe mode: it records what it would have held and changes nothing. It ships as a container that runs next to your agent; you point the agent at the guard's address.</p></div>
       </div>
       <p class="flow-note">
         <strong>What we tested.</strong> We ran the guard end to end in front of unmodified LangGraph, OpenAI Agents SDK,
