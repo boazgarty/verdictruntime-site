@@ -89,6 +89,41 @@
         </p>
       </div>
     </div>
+
+    <div class="agent-def agent-guard">
+      <h3>The guard in detail: every tool call checked before it runs</h3>
+      <p>
+        The guard sits between your AI agent and its model provider. Each time the model proposes a tool call,
+        such as sending an email or saving a note to memory, the guard checks it against your rules. In enforce
+        mode, a call that breaks a rule is removed before the agent can run it. A second guard does the same
+        between an AI client and its MCP tools.
+      </p>
+      <div class="grid3">
+        <div class="cell"><h3><span class="dot"></span>Outside recipients</h3><p>Holds an email, invite or message to anyone outside your organisation, and a web request that carries your data out.</p></div>
+        <div class="cell"><h3><span class="dot"></span>Protected values</h3><p>Holds an action whose text contains card or bank account numbers, API keys, or any value you mark as protected, such as the agent's system prompt.</p></div>
+        <div class="cell"><h3><span class="dot"></span>Memory writes</h3><p>Holds a write to the agent's memory when outside content, such as an email or a web page, triggered it, so one message cannot plant a standing instruction.</p></div>
+        <div class="cell"><h3><span class="dot"></span>Owner approval</h3><p>Where a rule asks for a human decision, the action waits for the owner to approve or reject it. An approved call is released once. The held call is stored encrypted and expires.</p></div>
+        <div class="cell"><h3><span class="dot"></span>MCP tools</h3><p>Hides MCP tools you did not approve, and refuses a tool whose description or parameters changed after you approved it.</p></div>
+        <div class="cell"><h3><span class="dot"></span>Observe first, then enforce</h3><p>It starts in observe mode: it records what it would have held and changes nothing. It runs as a separate service next to your agent, which you point at the guard's address.</p></div>
+      </div>
+      <p class="flow-note">
+        <strong>What we tested.</strong> We ran the guard end to end in front of unmodified LangGraph, OpenAI Agents SDK,
+        CrewAI and AutoGen agents, over OpenAI Chat Completions, the OpenAI Responses API and Anthropic Messages,
+        streaming and non-streaming. In those runs, none of the tool calls the guard held was executed (checked
+        against each tool's own record), while the same calls did run when the guard was removed. The MCP guard was tested with the
+        official MCP Inspector client. The guard's logs record which rule fired and which tool was involved, not the
+        text of prompts or responses.
+      </p>
+      <p class="flow-note">
+        <strong>What that does not show.</strong> Those tests used a scripted model in place of the provider. They show
+        that the guard intercepts and removes the calls; they do not show how often a real model would propose one, and
+        we make no claim about stopping real attackers. Not every framework was run on every format.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:security@verdictruntime.com?subject=AI%20agent%20guard%3A%20observe%20mode&amp;body=Company%3A%0AAgent%20framework%20and%20model%20provider%3A%0AMCP%20servers%20in%20use%20(if%20any)%3A%0A">Run it in observe mode in front of your agent</a>
+        <span class="btn-note">Free for design partners. Observe mode blocks nothing. Reply within two business days.</span>
+      </div>
+    </div>
   </section>
 
   <div class="cta">

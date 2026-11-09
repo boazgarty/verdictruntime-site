@@ -709,5 +709,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 .wf-video { margin: 0 0 40px; }
 .wf-video .caption { text-align: center; }
 .agent-def { margin-top: 44px; }
-.agent-def h3 { font-family: Archivo, "IBM Plex Sans", sans-serif; font-size: 22px; margin: 0 0 10px; }
+.agent-def > h3 { font-family: Archivo, "IBM Plex Sans", sans-serif; font-size: 22px; margin: 0 0 10px; }
 .agent-def > p { max-width: 760px; margin: 0 0 24px; color: var(--text-muted); }
+.agent-guard > .flow-note { margin: 18px 0 0; max-width: 760px; }
