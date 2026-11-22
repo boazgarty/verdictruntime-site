@@ -25,9 +25,9 @@
   <div class="topnav-in">
     <a class="wordmark" href="/"><span class="mark"></span><span>Verdict<span class="wordmark-2">Runtime</span></span></a>
     <div class="topnav-links">
-      <a href="/benchmark/">Benchmark</a>
       <a href="/how-it-works/">How it works</a>
       <a href="/coverage/">Coverage</a>
+      <a href="/benchmark/">Benchmark</a>
       <a href="/defense/">Defense</a>
       <a href="/integrations/">Integrations</a>
       <a href="/deployment/">Deployment</a>
@@ -35,7 +35,7 @@
     </div>
     <div class="topnav-actions">
       <a class="topnav-login" href="https://app.verdictruntime.com/">Log in</a>
-      <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
+      <a class="btn btn-sm" href="mailto:security@verdictruntime.com?subject=Free%20assessment&amp;body=Company%3A%0AWhat%20to%20test%20(app%20or%20API%20URL%2C%20AI%20agent%2C%20repository)%3A%0AIs%20it%20a%20staging%20copy%3F%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Free assessment</a>
     </div>
   </div>
 </nav>
@@ -50,26 +50,11 @@
   <section id="coverage">
     <div class="sec-head">
       <div class="eyebrow">Coverage</div>
-      <h2>One report across your whole stack</h2>
-      <p>Every engine lands in one schema, deduplicated and correlated, so you read one report, not six.</p>
+      <h2>What we test</h2>
+      <p>Live attacks on your AI agents and running apps, plus a scan of the code underneath for the full picture. One deduplicated report, not six.</p>
     </div>
 
     <div class="grid2">
-      <div class="cell">
-        <h3><span class="dot"></span>Dependencies &amp; supply chain</h3>
-        <p>Vulnerable packages, whether they're reachable from your entry points, and a signed SBOM.</p>
-        <div class="cell-note">Reachability &middot; SBOM &middot; signing &middot; VEX</div>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>Source code</h3>
-        <p>Injection, auth, access-control and crypto defects, cross-checked by two engines.</p>
-        <div class="cell-note">~20 in-house rules for gaps the market misses</div>
-      </div>
-      <div class="cell">
-        <h3><span class="dot"></span>Secrets, cloud &amp; pipelines</h3>
-        <p>Committed credentials, cloud and Kubernetes misconfiguration, hijackable CI workflows.</p>
-        <div class="cell-note">Cloud posture &middot; container images &middot; CI</div>
-      </div>
       <div class="cell">
         <h3><span class="dot"></span>Running application</h3>
         <p>Authenticated testing, including broken authorization that only shows when two real accounts are compared.</p>
@@ -84,6 +69,21 @@
         <h3><span class="dot"></span>Business logic</h3>
         <p>An agent that learns your app's real API traffic, then tests rules like double-redeemed coupons and replayed checkouts.</p>
         <div class="cell-note">Uncertain results are labelled for review</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Source code</h3>
+        <p>Injection, auth, access-control and crypto defects, cross-checked by two engines.</p>
+        <div class="cell-note">~20 in-house rules for gaps the market misses</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Dependencies &amp; supply chain</h3>
+        <p>Vulnerable packages, whether they're reachable from your entry points, and a signed SBOM.</p>
+        <div class="cell-note">Reachability &middot; SBOM &middot; signing &middot; VEX</div>
+      </div>
+      <div class="cell">
+        <h3><span class="dot"></span>Secrets, cloud &amp; pipelines</h3>
+        <p>Committed credentials, cloud and Kubernetes misconfiguration, hijackable CI workflows.</p>
+        <div class="cell-note">Cloud posture &middot; container images &middot; CI</div>
       </div>
     </div>
 
@@ -120,13 +120,13 @@
   </section>
 
   <div class="cta">
-    <h2>Get your first verdict free</h2>
+    <h2>Get your first assessment free</h2>
     <p>
-      One repository, one report, no obligation: the findings, the evidence behind each one, the
-      fixes we can prepare, and an honest note on what we couldn't check.
+      One staging app or one AI agent, one report, no obligation: the findings, the live proof
+      behind each one, the fixes we can prepare, and an honest note on what we couldn't check.
     </p>
     <div class="cta-row">
-      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20first%20assessment&amp;body=Company%3A%0AWhat%20to%20assess%20(repository%20or%20URL)%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
+      <a class="btn" href="mailto:security@verdictruntime.com?subject=Free%20assessment&amp;body=Company%3A%0AWhat%20to%20test%20(app%20or%20API%20URL%2C%20AI%20agent%2C%20repository)%3A%0AIs%20it%20a%20staging%20copy%3F%3A%0AAre%20you%20authorised%20to%20have%20it%20tested%3F%3A%0A">Request a free assessment</a>
       <a class="btn btn-ghost" href="/sample-report.html">See a sample report</a>
       <span class="btn-note">Reply within two business days.</span>
     </div>
@@ -138,7 +138,7 @@
 
 
   <footer>
-    <div>Verdict Runtime &mdash; application and AI security</div>
+    <div>Verdict Runtime &mdash; agent and application defense, built on real proof</div>
     <div>Built by an independent security team with more than 15 years in defensive security, enterprise vulnerability management and security products.</div>
     <div><a href="mailto:security@verdictruntime.com">security@verdictruntime.com</a></div>
     <div class="footer-links"><a href="/how-it-works/">How it works</a> &middot; <a href="/benchmark/">Benchmark</a> &middot; <a href="/coverage/">Coverage</a> &middot; <a href="/defense/">Defense</a> &middot; <a href="/integrations/">Integrations</a> &middot; <a href="/deployment/">Deployment</a> &middot; <a href="/security/">Security</a> &middot; <a href="/faq/">FAQ</a> &middot; <a href="/sample-report.html">Sample report</a> &middot; <a href="/attributions/">Attributions</a></div>
